@@ -1,0 +1,4140 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LeadSoft.Common.GlobalDomain</name>
+    </assembly>
+    <members>
+        <member name="T:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftErrorController">
+            <summary>
+            Default and abstract LeadSoft Error controller. For common/private methods
+            Swagger ignores it by setting below
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftErrorController.Error">
+            <summary>
+            Error method
+            </summary>
+            <returns>Problem pattern: Stack trace with a title</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController">
+            <summary>
+            Default and abstract LeadSoft Base controller for common/private methods
+            </summary>
+            <remarks>
+            Useful information endpoints:
+             * API version
+             * Configuration info
+             * Brazil CEP (ZIP) address search
+             * Brazil States and Regions,
+             * Cities
+             * Months
+             * Brazil holidays
+             * Document (CPF/CNPJ) validations
+            </remarks>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.#ctor(System.Reflection.Assembly)">
+            <summary>
+            Default and abstract LeadSoft Base controller for common/private methods
+            </summary>
+            <remarks>
+            Useful information endpoints:
+             * API version
+             * Configuration info
+             * Brazil CEP (ZIP) address search
+             * Brazil States and Regions,
+             * Cities
+             * Months
+             * Brazil holidays
+             * Document (CPF/CNPJ) validations
+            </remarks>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetVersion">
+            <summary>
+            Method available to retrieve current Web API version name
+            </summary>
+            <returns>DTO String Response</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetEnvironment">
+            <summary>
+            Method available to retrieve current Web API environment name
+            </summary>
+            <returns>DTO String Response</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetValidAuthorization">
+            <summary>
+            Method that checks if JWT Authorization is valid or expired.
+            </summary>
+            <response code="200">You are authorized, your JWT seems to be valid.</response>
+            <response code="401">You are unauthorized, <see langword="try"/> getting a new JTW.</response>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetRSAAsync">
+            <summary>
+            Endpoint que disponbiliza chaves RSA
+            </summary>
+            <returns>Chaves pública e privada.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetInfo">
+            <summary>
+            Method available to retrieve current Web API app information config
+            </summary>
+            <returns>DTO Key Value Response</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetCEPAsync(System.String)">
+            <summary>
+            Method available get an Address by CEP
+            </summary>
+            <param name="aCep">CEP number</param>
+            <returns>DTOFoundAddress</returns>
+            <response code="200">Address found</response>  
+            <response code="400">Invalid CEP</response>  
+            <response code="404">Address not found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetRegions">
+            <summary>
+            Method available get Brasil Regions list from Enum List.
+            </summary>
+            <returns>DTOEnum</returns>
+            <response code="200">Address found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetRegionUFs(LeadSoft.Common.Library.Enumerators.Enums.Region)">
+            <summary>
+            Method available get states of Brasil Region from Enum List.
+            </summary>
+            <returns>DTOEnum</returns>
+            <response code="200">Address found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetStatesAsync">
+            <summary>
+            Method available get UF list.
+            It returns Region data with each state.
+            </summary>
+            <param name="aCep">CEP number</param>
+            <returns>List of DTOState</returns>
+            <response code="200">Address found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetStatesForCombo">
+            <summary>
+            Method available get UF list from Enum list.
+            This method is faster than a bullet! Use this to fill combo.
+            </summary>
+            <returns>List f DTOEnumContent</returns>
+            <response code="200">Address found</response>
+            <response code="404">Address not found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetStateAsync(LeadSoft.Common.Library.Enumerators.Enums.UF)">
+            <summary>
+            Method available get UF information from IBGE by Enum.
+            It returns Region data for state.
+            </summary>
+            <param name="aUF">UF Enum</param>
+            <returns>DTOState</returns>
+            <response code="200">Address found</response>
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetStatesCitiesAsync(LeadSoft.Common.Library.Enumerators.Enums.UF)">
+            <summary>
+            Method available get an Address by CEP
+            </summary>
+            <param name="aUF">UF Enum</param>
+            <returns>List of DTOCity</returns>
+            <response code="200">Address found</response>
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetCitiesAsync(System.Int32)">
+            <summary>
+            Method available get an Address by CEP
+            </summary>
+            <param name="aCityId">City IBGE Id</param>
+            <returns>DTOCity</returns>
+            <response code="200">Address found</response>
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetDocumentValid(LeadSoft.Common.GlobalDomain.Entities.Enums.DocumentType,System.String)">
+            <summary>
+            Method available to verify if CPF or CNPJ is valid
+            </summary>
+            <param name="aDocumentType">Document Type Enum Based</param>
+            <param name="aDocumentNumber">DocumentNumber</param>
+            <returns>Bool</returns>
+            <response code="200">Valid or Not</response>
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetCnpjInfoAsync(System.String)">
+            <summary>
+            Method available to get Company information by its Cnpj 
+            </summary>
+            <remarks>
+            Use this method to retrieve Company information by its Cnpj
+            
+            Business rule: **[LPAY-138]**
+            
+            *Authentication required*
+            </remarks>
+            <param name="aCnpj">Cnpj</param>
+            <returns>DTOBrasilApiCnpjResponse</returns>
+            <response code="404">Not Found</response>
+            <response code="200">Ok</response>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetDays">
+            <summary>
+            Method available get Day list from Enum List.
+            </summary>
+            <returns>DTOEnum</returns>
+            <response code="200">Day found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetMonths(LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodRequest)">
+            <summary>
+            Method available get Month list from Enum List.
+            </summary>
+            <remarks>
+            Inform date period to retrieve months between'em.
+            </remarks>
+            <returns>DTOEnum</returns>
+            <response code="200">Month found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetYearMonths">
+            <summary>
+            Method available get Month from Month Days list from Enum List.
+            </summary>
+            <returns>DTOEnum</returns>
+            <response code="200">Month found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetMonthDays(LeadSoft.Common.Library.Enumerators.Enums.MonthDay,System.Nullable{System.Int32})">
+            <summary>
+            Method available get Month Days from Month from Enum List.
+            </summary>
+            <remarks>
+            Inform Year to get days in month.
+            </remarks>
+            <param name="aMonthDay">Month day enum</param>
+            <param name="aYear">Optional Year</param>
+            <returns>DTOEnum</returns>
+            <response code="200">Month days found</response>  
+            <response code="500">Internal Server Error</response>  
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Controllers.LeadSoftRootController.GetHolidaysInfoAsync(System.Int32)">
+            <summary>
+            Method available to get Holidays Information by year
+            </summary>
+            <remarks>
+            Use this method to retrieve information from all holidays from Brazil by year
+            
+            Business rule: **[LPAY-138]**
+            
+            *Authentication required*
+            </remarks>
+            <param name="aYear">Year</param>
+            <returns>IList of DTOBrasilApiHolidayResponse</returns>
+            <response code="404">Not Found</response>
+            <response code="200">Ok</response>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOBoolRequest">
+            <summary>
+            DTO Bool Request
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOBoolRequest.Value">
+            <summary>
+            Boolean value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOBoolResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOBoolResponse.#ctor(System.Boolean)">
+            <summary>
+            Constructor that sets Result property
+            </summary>
+            <param name="aResult">Boolean argument</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOBoolResponse.IsTrue">
+            <summary>
+            Return if Result is true.
+            Null means false
+            </summary>
+            <returns>True or False</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOBoolResponse.IsFalse">
+            <summary>
+            Return if Result is false. If false, then true
+            Null means false, so it returns true
+            Mindfuck!
+            </summary>
+            <returns>True or False if false or true</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTODateTimeRequest">
+            <summary>
+            DTO DateTime Request
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODateTimeRequest.Value">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOGuidRequest">
+            <summary>
+            DTO Guid Request
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOGuidRequest.Value">
+            <summary>
+            Guid value
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOGuidResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOGuidResponse.#ctor(System.Nullable{System.Guid})">
+            <summary>
+            Constructor that sets informed Guid
+            </summary>
+            <param name="aGuid">Guid value to be set</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOGuidResponse.#ctor">
+            <summary>
+            base constructor
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData">
+            <summary>
+            Image Data properties DTO
+            </summary>
+            <summary>
+            DTO Image Data Operators
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.Id">
+            <summary>
+            Image unique Id.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.Title">
+            <summary>
+            Title for image to identify it. To display on title session from an Album, for example. Also used by HTML title.
+            </summary>
+            <example>Cover picture</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.Description">
+            <summary>
+            Description for image. Describe it as a text or something else. Also used by HTML Alt option.
+            </summary>
+            <example>Announcement cover.</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.Bytes">
+            <summary>
+            Main image size in bytes
+            </summary>
+            <example>40960</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.Key">
+            <summary>
+            Image key, provided by Image container service
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.ThumbnailKey">
+            <summary>
+            Image thumbnail key, if it was used some kind of container service
+            </summary>
+            <example>Cover_w143kxnu_thumbnail.jpg</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageData">
+            <summary>
+            Image Data class to DTO Image Data
+            </summary>
+            <param name="aImageData">ImageData</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOImageData)~LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData">
+            <summary>
+            Image Data DTO to Image Data class
+            </summary>
+            <param name="aDto">DTOImageData</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead">
+            <summary>
+            Image Data properties DTO
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.Id">
+            <summary>
+            Image unique Id.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.Title">
+            <summary>
+            Title for image.
+            </summary>
+            <example>Cover picture</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.Description">
+            <summary>
+            Description for image.
+            </summary>
+            <example>Announcement cover.</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.Bytes">
+            <summary>
+            Main image size in bytes
+            </summary>
+            <example>40960</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.Key">
+            <summary>
+            Image key
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.ThumbnailKey">
+            <summary>
+            Image thumbnail Key
+            </summary>
+            <example>Cover_w143kxnu_thumbnail.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.Url">
+            <summary>
+            Image Url
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.ThumbnailUrl">
+            <summary>
+            Image thumbnail Url
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.#ctor">
+            <summary>
+            Base constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.ToDTO(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)">
+            <summary>
+            
+            </summary>
+            <param name="aImageData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead">
+            <summary>
+            
+            </summary>
+            <param name="aImageData"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse">
+            <summary>
+            Image Data properties DTO Response
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.Title">
+            <summary>
+            Title for image.
+            </summary>
+            <example>Cover picture</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.Description">
+            <summary>
+            Description for image.
+            </summary>
+            <example>Announcement cover.</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.Bytes">
+            <summary>
+            Main image size in bytes
+            </summary>
+            <example>40960</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.Key">
+            <summary>
+            Image key
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.ThumbnailKey">
+            <summary>
+            Image thumbnail Key
+            </summary>
+            <example>Cover_w143kxnu_thumbnail.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.Url">
+            <summary>
+            Image Url
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.ThumbnailUrl">
+            <summary>
+            Image thumbnail Url
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.#ctor">
+            <summary>
+            Base constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.ToDTO(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)">
+            <summary>
+            
+            </summary>
+            <param name="aImageData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse">
+            <summary>
+            
+            </summary>
+            <param name="aImageData"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert">
+            <summary>
+            Image Data Upsert properties DTO
+            </summary>
+            <summary>
+            DTO Image Data Upsert Operators
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.Id">
+            <summary>
+            Image unique Id.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.Title">
+            <summary>
+            Title for image to identify it. To display on title session from an Album, for example. Also used by HTML title.
+            </summary>
+            <example>Cover picture</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.Description">
+            <summary>
+            Description for image. Describe it as a text or something else. Also used by HTML Alt option.
+            </summary>
+            <example>Announcement cover.</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.Bytes">
+            <summary>
+            Main image size in bytes
+            </summary>
+            <example>40960</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.Key">
+            <summary>
+            Image key, provided by Image container service
+            </summary>
+            <example>Cover_w143kxnu.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.ThumbnailKey">
+            <summary>
+            Image thumbnail key, if it was used some kind of container service
+            </summary>
+            <example>Cover_w143kxnu_thumbnail.jpg</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.Operation">
+            <summary>
+            Desired operation (Create, Update or Delete)
+            </summary>
+            <example>Create</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert)~LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData">
+            <summary>
+            Image Data class to DTO Image Data
+            </summary>
+            <param name="aDto">DTOImageDataUpsert</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration">
+            <summary>
+            Integration DTO
+            </summary>
+            <summary>
+            Integration DTO methods
+            </summary>
+            <summary>
+            DTO Image Data Upsert Operators
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.IntegrationServiceType">
+            <summary>
+            Integration Type
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.AppKey">
+            <summary>
+            App Key
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.AppSecret">
+            <summary>
+            App Secret
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.ToIntegration">
+            <summary>
+            Conversion To Integration Object
+            </summary>
+            <returns>Integration</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration)~LeadSoft.Common.GlobalDomain.Entities.Integration">
+            <summary>
+            Image Data class to DTO Image Data
+            </summary>
+            <param name="aDto">DTOImageDataUpsert</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOIpAddressRequest">
+            <summary>
+            IP Address request dto
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOIpAddressRequest.IpAddress">
+            <summary>
+            Frontend IP Address
+            </summary>
+            <example>192.58.56.181</example>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOKeyValueResponse">
+            <summary>
+            DTO Key Value response
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOKeyValueResponse.Value">
+            <summary>
+            String value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOKeyValueResponse.#ctor">
+            <summary>
+            Base Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOKeyValueResponse.#ctor(System.String,System.String)">
+            <summary>
+            Value constructor
+            </summary>
+            <param name="aKey">Key</param>
+            <param name="aValue">Value</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOKeyValueResponse.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Value constructor
+            </summary>
+            <param name="aId">Guid Id</param>
+            <param name="aKey">Key</param>
+            <param name="aValue">Value</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOKeyValueResponse.#ctor(System.Nullable{System.Guid},System.String,System.String)">
+            <summary>
+            Value constructor
+            </summary>
+            <param name="aId">Nullable Guid Id</param>
+            <param name="aKey">Key</param>
+            <param name="aValue">Value</param>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOList`1.RecordCount">
+            <summary>
+            Items Count
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1">
+            <summary>
+            Generic paged list response DTO
+            </summary>
+            <typeparam name="T">Any DTOResponse inherited object type</typeparam>
+            <summary>
+            Generic paged list response Methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.CurrentPage">
+            <summary>
+            Current page value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.PageSize">
+            <summary>
+            Page maximum size
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.TotalResults">
+            <summary>
+            Total count of results, ignore pagging
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.TotalPages">
+            <summary>
+            Number of pages, based on total result and page size.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.HasPreviousPage">
+            <summary>
+            Informs if there is any previous page
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.HasNextPage">
+            <summary>
+            Informs if there are next pages
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.#ctor(LeadSoft.Common.GlobalDomain.PagedList{`0})">
+            <summary>
+            Paged list constructor.
+            Sets inner constructor with paged list.
+            </summary>
+            <param name="aPagedList">Paged list of objects to be set</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Int64)">
+            <summary>
+            Constructor based on an existing list, that sets inner base constructor with informed data.
+            </summary>
+            <param name="aList">List of objects</param>
+            <param name="aPageSize">Page size number</param>
+            <param name="aCurrentPage">Current page number</param>
+            <param name="aTotalResults">Count of total results</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.GetPagingHeader``1(Microsoft.AspNetCore.Mvc.IUrlHelper,System.String,``0)">
+            <summary>
+            Gets header paging intomation serialized object in Json string
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <param name="aUrl">Method Url</param>
+            <param name="aRouteName">Name of current route</param>
+            <param name="aDtoPagedRequestInheritance">DTO paged request inheritance to keep original params on query</param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.GetSanitizedPagingHeader``1(Microsoft.AspNetCore.Mvc.IUrlHelper,System.String,``0)">
+            <summary>
+            Gets sanitized header paging intomation serialized object in Json string
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <param name="aUrl">Method Url</param>
+            <param name="aRouteName">Name of current route</param>
+            <param name="aDtoPagedRequestInheritance">DTO paged request inheritance to keep original params on query</param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.IsEmpty">
+            <summary>
+            Check if list is empty
+            </summary>
+            <returns>True or false</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest">
+            <summary>
+            Page request DTO.
+            </summary>
+            <summary>
+            Page request DTO methods.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest.CurrentPage">
+            <summary>
+            Page to be shown
+            (IsPaged must be true)
+            </summary>
+            <example>1</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest.PageSize">
+            <summary>
+            Page size (number of results per page)
+            (IsPaged must be true)
+            </summary>
+            <example>10</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest.IsPaged">
+            <summary>
+            Enable or disable page list for request
+            </summary>
+            <example>true</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest.#ctor(System.Boolean)">
+            <summary>
+            Is paged based Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest.TakeSkip">
+            <summary>
+            Calculates Skip value
+            </summary>
+            <returns>int skip value</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedSearchRequest">
+            <summary>
+            Page Search request DTO.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedSearchRequest.SearchText">
+            <summary>
+            Search Text
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod">
+            <summary>
+            DTO DateTime Period
+            </summary>
+            <summary>
+            DTO DateTime Period methods
+            </summary>
+            <summary>
+            DTO DateTime Period operators
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod.Since">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod.Until">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod.Now">
+            <summary>
+            UTC Now
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod.IsInIt">
+            <summary>
+            If date time now utc is in period
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Period)~LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod">
+            <summary>
+            
+            </summary>
+            <param name="aImageData"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodRequest">
+            <summary>
+            DTO DateTime Period Request
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodRequest.Since">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodRequest.Until">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse">
+            <summary>
+            DTO DateTime Period Response
+            </summary>
+            <summary>
+            DTO DateTime Period Response methods
+            </summary>
+            <summary>
+            DTO DateTime Period Response operators
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse.Since">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse.Until">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse.Now">
+            <summary>
+            UTC Now
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse.IsInIt">
+            <summary>
+            If date time now utc is in period
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Period)~LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse">
+            <summary>
+            
+            </summary>
+            <param name="aImageData"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse">
+            <summary>
+            Abstract DTO Response
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse.Id">
+            <summary>
+            Main object Id
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse.Key">
+            <summary>
+            Optional external Integration Key
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse.CreatedAt">
+            <summary>
+            Main object Created at Property
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse.UpdatedAt">
+            <summary>
+            Main object Updated at Property
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse.IsEnabled">
+            <summary>
+            Main object Is Enabled property
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse.IsInvalid">
+            <summary>
+            Object validation flag if the model is valid, based in IsValid or IsValidCollection class abstraction
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOResponse.DtoValidations">
+            <summary>
+            Object validations based in IsValid or IsValidCollection class abstraction
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOStringResponse">
+            <summary>
+            DTO string response
+            </summary>
+            <summary>
+            DTO String Response methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOStringResponse.Value">
+            <summary>
+            String value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOStringResponse.#ctor(System.String)">
+            <summary>
+            Constructor that sets informed Value
+            </summary>
+            <param name="aValue">Value to be set</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOTermAcceptance">
+            <summary>
+            Term Acceptance DTO.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOTermAcceptance.AcceptedTerm">
+            <summary>
+            Boolean that determines if Term was accepted. False results in 404 bad request by definition.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOTermAcceptance.TermId">
+            <summary>
+            Term Id
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOTermAcceptance.SoftwareId">
+            <summary>
+            Software Id retrieved by header
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOUploadResponse">
+            <summary>
+            Constructor that sets informed Value
+            </summary>
+            <param name="aUrl">Value to be set</param>
+            <param name="aThumbnailUrl">Value to be set</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOUploadResponse.#ctor(System.Uri,System.Uri)">
+            <summary>
+            Constructor that sets informed Value
+            </summary>
+            <param name="aUrl">Value to be set</param>
+            <param name="aThumbnailUrl">Value to be set</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOValidation.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.Validations.Validation)~LeadSoft.Common.GlobalDomain.DTOs.DTOValidation">
+            <summary>
+            Permite a conversão implícita de um objeto validation para DTOValidation.
+            </summary>
+            <param name="validation">Objeto Validation original.</param>
+            <remarks>
+            Retorna nulo caso o parâmetro fornecido seja nulo.
+            </remarks>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Fiscal.DTOPagedFiscalSearchRequest">
+            <summary>
+            Paged Fiscal info Search request DTO.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Fiscal.DTOPagedFiscalSearchRequest.OrderByKey">
+            <summary>
+            Order by key instead of description
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress">
+            <summary>
+            DTO Address methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Description">
+            <summary>
+            Address description
+            </summary>
+            <example>Matrix office</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Street">
+            <summary>
+            Street name
+            </summary>
+            <example>Av. Brasil</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Number">
+            <summary>
+            Number of address
+            </summary>
+            <example>2048</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Neighborhood">
+            <summary>
+            Neighborhood name
+            </summary>
+            <example>Santa Felicidade</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Complement">
+            <summary>
+            Complement
+            </summary>
+            <example>Bloco C. 15º andar</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Reference">
+            <summary>
+            Some reference
+            </summary>
+            <example>Next to Plaza</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.ZIP">
+            <summary>
+            CEP / ZIP code
+            </summary>
+            <example>82006456</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.State">
+            <summary>
+            State / Unidade Federativa
+            Get those options on Root Controller
+            </summary>
+            <example>PR</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.StateName">
+            <summary>
+            State / Unidade Federativa name
+            </summary>
+            <example>Curitiba</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.CityId">
+            <summary>
+            City IBGE Code.
+            Get those options on Root Controller.
+            </summary>
+            <example>4106902</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.City">
+            <summary>
+            City
+            Get those options on Root Controller.
+            </summary>
+            <example>Curitiba</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Country">
+            <summary>
+            Country enum
+            Brazil is default
+            </summary>
+            <example>BR</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.IsBilling">
+            <summary>
+            Is this a billing address? If yes, place true
+            </summary>
+            <example>false</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.Geolocation">
+            <summary>
+            Item 1: Latitude
+            Item 2: Longitude
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.IsPrimary">
+            <summary>
+            Indicates if this address is primary
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.SetPrimary">
+            <summary>
+            Set Primary methods
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.ToAddress">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOAddress.ToDTO(LeadSoft.Common.GlobalDomain.Entities.Address)">
+            <summary>
+            
+            </summary>
+            <param name="aAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Description">
+            <summary>
+            Address description.
+            - Country home
+            - Matrix office
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Street">
+            <summary>
+            Street name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Number">
+            <summary>
+            Number of address
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Neighborhood">
+            <summary>
+            Neighborhood name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Complement">
+            <summary>
+            Complement
+            - House 2
+            - Apartment 3
+            - 15th floor
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Reference">
+            <summary>
+            Some reference
+            - Next to Plaza
+            - Close to main cemetery gate
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.ZIP">
+            <summary>
+            CEP / ZIP code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.State">
+            <summary>
+            State / Unidade Federativa
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.StateName">
+            <summary>
+            State / Unidade Federativa name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.CityId">
+            <summary>
+            City IBGE Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.City">
+            <summary>
+            City
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Country">
+            <summary>
+            Country enum
+            Brazil is default
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.IsBilling">
+            <summary>
+            Is this a billing address? If yes, place true
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.Geolocation">
+            <summary>
+            Item 1: Latitude
+            Item 2: Longitude
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressResponse.IsPrimary">
+            <summary>
+            Indicates if this address is primary
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Description">
+            <summary>
+            Address description.
+            - Country home
+            - Matrix office
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Street">
+            <summary>
+            Street name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Number">
+            <summary>
+            Number of address
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Neighborhood">
+            <summary>
+            Neighborhood name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Complement">
+            <summary>
+            Complement
+            - House 2
+            - Apartment 3
+            - 15th floor
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Reference">
+            <summary>
+            Some reference
+            - Next to Plaza
+            - Close to main cemetery gate
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.ZIP">
+            <summary>
+            CEP / ZIP code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.State">
+            <summary>
+            State / Unidade Federativa
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.CityId">
+            <summary>
+            City IBGE Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.City">
+            <summary>
+            City name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Country">
+            <summary>
+            Country enum
+            Brazil is default
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.IsBilling">
+            <summary>
+            Is this a billing address? If yes, place true
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.Geolocation">
+            <summary>
+            Item 1: Latitude
+            Item 2: Longitude
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOAddressUpsert.IsPrimary">
+            <summary>
+            Indicates if this address should become primary
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse">
+            <summary>
+            DTO Bank Account Response
+            </summary>
+            <summary>
+            DTO Bank Account Response
+            </summary>
+            <summary>
+            DTO Bank Account Response
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.Code">
+            <summary>
+            Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.LegalName">
+            <summary>
+            Legal Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.DocumentNumber">
+            <summary>
+            Document Number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.AgencyNumber">
+            <summary>
+            Agency Number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.AgencyVc">
+            <summary>
+            Agency Vc
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.AccountNumber">
+            <summary>
+            Account Number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.AccountVc">
+            <summary>
+            Account Vc
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.Pix">
+            <summary>
+            Pix key
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.#ctor">
+            <summary>
+            Constructor Basic
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.BankAccount)~LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse">
+            <summary>
+            Operator from Bank Account to DTOBankAccount
+            </summary>
+            <param name="aBankAccount">Bank Account</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert">
+            <summary>
+            DTO Bank Account Update
+            </summary>
+            <summary>
+            DTO Bank Account Update
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.Code">
+            <summary>
+            Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.LegalName">
+            <summary>
+            Legal Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.DocumentNumber">
+            <summary>
+            Document Number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.AgencyNumber">
+            <summary>
+            Agency Number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.AgencyVc">
+            <summary>
+            Agency Vc
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.AccountNumber">
+            <summary>
+            Account Number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.AccountVc">
+            <summary>
+            Account Vc
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.Pix">
+            <summary>
+            Pix Key
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert)~LeadSoft.Common.GlobalDomain.Entities.BankAccount">
+            <summary>
+            Explicit Operator
+            </summary>
+            <param name="aAccount"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonResponse">
+            <summary>
+            DTOLegalPerson
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonResponse.CompanyName">
+            <summary>
+            Company Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonResponse.BusinessName">
+            <summary>
+            Business Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonResponse.Website">
+            <summary>
+            Website
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonUpdate">
+            <summary>
+            DTOLegalPersonUpdate
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonUpdate.CompanyName">
+            <summary>
+            Company Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonUpdate.BusinessName">
+            <summary>
+            Business Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTOLegalPersonUpdate.Website">
+            <summary>
+            Website
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonResponse">
+            <summary>
+            DTONaturalPersonResponse
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonResponse.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonResponse.MiddleName">
+            <summary>
+            Middle Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonResponse.LastName">
+            <summary>
+            Last Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonResponse.BirthDate">
+            <summary>
+            Birth Date
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonResponse.Gender">
+            <summary>
+            Gender
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonUpdate">
+            <summary>
+            DTONaturalPersonUpdate
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonUpdate.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonUpdate.MiddleName">
+            <summary>
+            Middle Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonUpdate.LastName">
+            <summary>
+            Last Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonUpdate.BirthDate">
+            <summary>
+            Birth Date
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Infos.Person.DTONaturalPersonUpdate.Gender">
+            <summary>
+            Gender
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocument.Type">
+            <summary>
+            Document type enum
+             - Passport
+             - Driver license
+             - Others
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocument.Number">
+            <summary>
+            Oficial number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocument.Issue">
+            <summary>
+            Date when document was issued, if needed
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocument.Expiration">
+            <summary>
+            Date when document expires, if needed
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTODocument.ToDTO(LeadSoft.Common.GlobalDomain.Entities.Document)">
+            <summary>
+            
+            </summary>
+            <param name="aDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentFileInfo.Extension">
+            <summary>
+            File extension enum
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentFileInfo.Size">
+            <summary>
+            File size in bytes (b)
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentInsert.Type">
+            <summary>
+            Document type enum
+             - Passport
+             - Driver license
+             - Others
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentInsert.Number">
+            <summary>
+            Oficial number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentInsert.Issue">
+            <summary>
+            Date when document was issued, if needed
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentInsert.Expiration">
+            <summary>
+            Date when document expires, if needed
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentResponse.Type">
+            <summary>
+            Document type enum
+             - Passport
+             - Driver license
+             - Others
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentResponse.Number">
+            <summary>
+            Official number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentResponse.Issue">
+            <summary>
+            Date when document was issued, if needed
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentResponse.Expiration">
+            <summary>
+            Date when document expires, if needed
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTODocumentResponse.DtoFileInfo">
+            <summary>
+            File info if attachment for this document exists
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOContact">
+            <summary>
+            Abstract DTO Contact
+            </summary>
+            <summary>
+            DTO Contact methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOContact.Type">
+            <summary>
+            Contact type enum
+            </summary>
+            <example>Mobile</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOContact.CanNotify">
+            <summary>
+            According to LGPD, this field is required and must be filled by user, if he want's to disable notifications.
+            This flag tells system if it can be used to receive notifications (e-mail/sms/call)
+            </summary>
+            <example>true</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOContact.IsPrimary">
+            <summary>
+            Indicates if this Email should become primary
+            </summary>
+            <example>true</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOContact.SetPrimary">
+            <summary>
+            Set current contact to primary.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOContactResponse.Type">
+            <summary>
+            Contact type enum
+            </summary>
+            <example>Mobile</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOContactResponse.CanNotify">
+            <summary>
+            According to LGPD, this field is required and must be filled by user, if he want's to disable notifications.
+            This flag tells system if it can be used to receive notifications (e-mail/sms/call)
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOContactResponse.IsPrimary">
+            <summary>
+            Indicates if this Email should become primary
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact">
+            <summary>
+            DTO E-mail contact
+            </summary>
+            <summary>
+            DTO Email contact Methods
+            </summary>
+            <summary>
+            DTO Email contact Operators
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.Address">
+            <summary>
+            Address
+            </summary>
+            <example>leadsoft@leadsoft.inf.br</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.ToEmailContact">
+            <summary>
+            DTO to Email contact class
+            </summary>
+            <returns>Email contact class</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.ToDTO(LeadSoft.Common.GlobalDomain.Entities.EmailContact)">
+            <summary>
+            
+            </summary>
+            <param name="aEmailContact"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.EmailContact)~LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact">
+            <summary>
+            Email contact to DTO Email contact
+            </summary>
+            <param name="aEmailContact">Email contact class</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact)~LeadSoft.Common.GlobalDomain.Entities.EmailContact">
+            <summary>
+            DTO Email contact to email contact class
+            </summary>
+            <param name="aDtoEmailContact">DTO Email contact</param>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContactResponse.Address">
+            <summary>
+            Address
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContactUpsert.Address">
+            <summary>
+            Address
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContact">
+            <summary>
+            Phone contact DTO
+            </summary>
+            <summary>
+            Phone contact methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContact.DDI">
+            <summary>
+            Discagem Direta Internacional
+            </summary>
+            <example>55</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContact.DDD">
+            <summary>
+            Discagem Direta à Distância
+            </summary>
+            <example>31</example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContact.Number">
+            <summary>
+            Phone number
+            </summary>
+            <example>997759557</example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContact.ToPhoneContact">
+            <summary>
+            DTO to Phone contact class
+            </summary>
+            <returns>Phone Contact class</returns>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContactResponse.DDI">
+            <summary>
+            Discagem Direta Internacional
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContactResponse.DDD">
+            <summary>
+            Discagem Direta à Distância
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContactResponse.Number">
+            <summary>
+            Phone number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContactUpsert.DDI">
+            <summary>
+            Discagem Direta Internacional
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContactUpsert.DDD">
+            <summary>
+            Discagem Direta à Distância
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContactUpsert.Number">
+            <summary>
+            Phone number
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.Vigency">
+            <summary>
+            Price value vigency
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.Value">
+            <summary>
+            Price value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.Price">
+            <summary>
+            Price display value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.Cost">
+            <summary>
+            Cost value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.ToPrice">
+            <summary>
+            Method available to Transform this object into a Price
+            </summary>
+            <returns>Price object</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.HideCost(System.Boolean)">
+            <summary>
+            Method available to hide cost if flagged to. Default = true.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.ToDTO(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)">
+            <summary>
+            Method available to convert a Price object to DTO
+            </summary>
+            <param name="aPrice">Price object</param>
+            <returns>Price Converted to DTO</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice">
+            <summary>
+            
+            </summary>
+            <param name="aPrice"></param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice)~LeadSoft.Common.GlobalDomain.Entities.Pricing.Price">
+            <summary>
+            
+            </summary>
+            <param name="aDto"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert">
+            <summary>
+            Price Insert DTO
+            </summary>
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert.Vigency">
+            <summary>
+            Optional Price value vigency. Null means that is current date time vigency
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert.Value">
+            <summary>
+            Price value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert.Cost">
+            <summary>
+            Cost value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert.ToPrice">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert)~LeadSoft.Common.GlobalDomain.Entities.Pricing.Price">
+            <summary>
+            
+            </summary>
+            <param name="aDto"></param>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRange.Min">
+            <summary>
+            Minimum Price Value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRange.Max">
+            <summary>
+            Maximum Price Value
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead">
+            <summary>
+            Price read DTO
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead.Value">
+            <summary>
+            Price value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead.Price">
+            <summary>
+            Price display value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead">
+            <summary>
+            
+            </summary>
+            <param name="aPrice"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.Vigency">
+            <summary>
+            Price value vigency
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.Value">
+            <summary>
+            Price value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.Price">
+            <summary>
+            Price display value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.Cost">
+            <summary>
+            Cost value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.HideCost(System.Boolean)">
+            <summary>
+            Method available to hide cost if flagged to. Default = true.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.ToDTO(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)">
+            <summary>
+            Method available to convert a Price object to DTO
+            </summary>
+            <param name="aPrice">Price object</param>
+            <returns>Price Converted to DTO</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse">
+            <summary>
+            
+            </summary>
+            <param name="aPrice"></param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Validations.GuidValidation.IsValid(System.Object)">
+            <summary>
+            Validate if Guid value is not null or empty
+            </summary>
+            <param name="value">Value to Validate</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Validations.IpAddressRequestValidation">
+            <summary>
+            DTO Ip Address request validation attribute
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Validations.IpAddressRequestValidation.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Checks if request is valid
+            </summary>
+            <param name="value">Object</param>
+            <param name="validationContext">Context</param>
+            <returns>Validation Result</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.Validations.TermAcceptanceValidation">
+            <summary>
+            DTO Term validation attribute
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Validations.TermAcceptanceValidation.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Checks if request is valid
+            </summary>
+            <param name="value">Object</param>
+            <param name="validationContext">Context</param>
+            <returns>Validation Result</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Validations.URLValidation.IsValid(System.Object)">
+            <summary>
+            Validate if URL value has a valid URL
+            </summary>
+            <param name="value">Value of URL to Validate</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.BaseEntity">
+            <summary>
+            Base entity to provide basic information for database domain entity classes
+            </summary>
+            <summary>
+            Base entity to provide basic information for database domain entity classes methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.Id">
+            <summary>
+            Database unique Id as Guid.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.CreatedAt">
+            <summary>
+            Created At date and time information
+            </summary>
+            <remarks>
+            Set automatically with current datetime on object first instance
+            </remarks>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.UpdatedAt">
+            <summary>
+            Updated at date and time information
+            </summary>
+            <remarks>
+            On every update on any field saved on database, this property must be updated to now.
+            </remarks>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.IsEnabled">
+            <summary>
+            Tells if entity is enabled or disabled
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.Enable">
+            <summary>
+            Enable entity.
+            Sets IsEnabled field as true
+            Virtual method.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.Disable">
+            <summary>
+            Disable entity.
+            Sets IsEnabled field as false
+            Virtual method.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.Update">
+            <summary>
+            Date when entity was updated
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.ClearId">
+            <summary>
+            Clears current Id to empty
+            </summary>
+            <returns>This for chain calls.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.NewId">
+            <summary>
+            Creates a new Id replacing prior one.
+            </summary>
+            <returns>self guid</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.BaseEntity.SetId(System.Guid)">
+            <summary>
+            Sets a new Id to image
+            </summary>
+            <param name="aId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase">
+            <summary>
+            Collection base abstract class means that this class contains basic properties for all entity that will be saved as Collection on database.
+            </summary>
+            <summary>
+            Collection base abstract class means that this class contains basic properties for all entity that will be saved as Collection on database.
+            </summary>
+            <summary>
+            Collection base abstract class means that this class contains basic properties for all entity that will be saved as Collection on database.
+            </summary>
+            <summary>
+            Collection base methods
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.TimeSerie">
+            <summary>
+            RavenDB TimeSerie representative type to easy read TimeSeries feature in entity runtime.
+            </summary>       
+            <see cref="!:https://ravendb.net/docs/article-page/7.0/csharp/studio/database/document-extensions/time-series"/>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.TimeSerie.#ctor">
+            <summary>
+            TimeSerie constructor to create a new TimeSerie without Id.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.TimeSerie.#ctor(System.Guid,System.Boolean)">
+            <summary>
+            TimeSerie constructor to create a new TimeSerie with a specific Id.
+            </summary>
+            <param name="aId">Document Id relation</param>
+            <param name="aIsIncremental">Defines the type of TimeSeries. False by default.</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.TimeSerie.SetName(System.String)">
+            <summary>
+             Sets the Name for this TimeSerie.
+            </summary>            
+            <remarks>
+             Follows the naming convention on RavenDB documentation
+             </remarks>
+             <see cref="!:https://ravendb.net/docs/article-page/7.0/csharp/studio/database/document-extensions/time-series#create-new-time-series-by-creating-its-first-entry"/>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.Id">
+            <summary>
+            Id string field to be recorded on Database
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.IsEnabled">
+            <summary>
+            Tells if entity is enabled or disabled
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.CreatedAt">
+            <summary>
+            Created At
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.UpdatedAt">
+            <summary>
+            Updated at
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.Guid">
+            <summary>
+            Guid to be used and validated inside .net
+            Should not be recorded in database
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.ExpirationSeconds">
+            <summary>
+            Expiration seconds for this entity, if null, means that this entity will not expire.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.ExpiresAt">
+            <summary>
+            Calculated property that returns the expiration date based on CreatedAt and ExpirationSeconds.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.TimeSeries">
+            <summary>
+            List of TimeSeries associated with this entity document.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.CountersNames">
+            <summary>
+            List of Counters associated with this entity document.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.NewId(System.Boolean)">
+            <summary>
+            Generates a new guid for any class.
+            </summary>
+            <remarks>
+            If class has no Id, it will be created.
+            
+            If class already have an Id, the flag that allows or not the replacement must be placed.
+            If true, it will replace with a new one.
+            
+            Both cases will return the most recent Guid. If not modified, current one.
+            </remarks>
+            <param name="aReplace">Use this flag if you want to replace existant value. Default false.</param>
+            <returns>Guid value</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.Create">
+            <summary>
+            Create a new enabled entity with new Id
+            </summary>
+            <returns>This for chain calls.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.ClearId">
+            <summary>
+            Clears current Id to empty
+            </summary>
+            <returns>This for chain calls.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.Enable">
+            <summary>
+            Enable collection base.
+            Sets IsEnabled field as true
+            Virtual method.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.Disable">
+            <summary>
+            Disable collection base.
+            Sets IsEnabled field as false
+            Virtual method.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.Update">
+            <summary>
+            Date when entity was updated
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.SetExpiration(System.Int64)">
+            <summary>
+            Sets the expiration time for the entity in seconds.
+            </summary>
+            <param name="aSeconds">Seconds to expire</param>
+            <returns>Self for chain calls</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.SetExpirationTo(System.DateTime)">
+            <summary>
+            Sets the expiration time for the entity to a specific DateTime.
+            </summary>
+            <param name="aAt">Should expire at</param>
+            <returns>Self for chain calls</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.Expires">
+            <summary>
+            Determines if the entity has an expiration time set.
+            </summary>
+            <returns>Self for chain calls</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.CancelExpiration">
+            <summary>
+            Cancels the expiration time for the entity.
+            </summary>
+            <returns>Self for chain calls</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.HasExpirationCancellation">
+            <summary>
+            Determines if the entity has an expiration cancellation set.
+            </summary>
+            <returns>Self for chain calls</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase.OverrideCreateDateTime(System.String)">
+            <summary>
+            <see langword="this"/> method overrides the CreatedAt <see langword="property"/> in current Entity.
+            </summary>
+            <remarks>
+            This <see langword="is"/> not a good practice, but if you need to change it to a new UTC Now Date Time, inform exact text "I understand the risks."
+            on <see langword="string"/> <see langword="param"/> and comment it into your code to explain yourself to your team why did that. :)
+            Updated At will be set to <see langword="null"/>.
+            Be kind, rock on!
+            </remarks>
+            <returns>Collection base</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile">
+            <summary>
+            Generic entity that represents a Cloud File
+            </summary>
+            <remarks>
+            Use this class to store, delete and read any file in S3 bucket.
+            You can also create temporary links.
+            </remarks>
+            <summary>
+            Generic entity that represents a Cloud File
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.Bucket">
+            <summary>
+            Bucket Name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.Key">
+            <summary>
+            File unique key generated by S3 upload
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.Title">
+            <summary>
+            Title for image
+            Use file name if title is not applicable
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.Description">
+            <summary>
+            Description for image
+            Subtitle? Maybe it's a good place to store it
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.Size">
+            <summary>
+            File size in bytes
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.FileType">
+            <summary>
+            File mime type
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.FileExtension">
+            <summary>
+            File mime type
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.Url">
+            <summary>
+            Image Uri
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.#ctor">
+            <summary>
+            Empty Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.#ctor(System.String,LeadSoft.Common.Library.Enumerators.Enums.FileExtension,System.String,System.Int64)">
+            <summary>
+            Main Constructor
+            </summary>
+            <remarks>
+            Use File extension to set the mime type on file. To get that, there is a function to find the correct enum.
+            If the file extension doesn't exist, create a new enum! Or request it on developers e-mail.
+                Enums.GetByDescription FileExtension (fileType)
+            </remarks>
+            <param name="bucket">Bucket name</param>
+            <param name="aFileExtension">File mime type in FileExtension.</param>
+            <param name="aKey">cloud key</param>
+            <param name="aSize">file size in bytes</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.#ctor(System.String,System.String)">
+            <summary>
+            base constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.UploadAsync(LeadSoft.Adapter.AWS.AmazonS3,System.IO.Stream,System.String,Amazon.S3.S3CannedACL,Amazon.S3.S3StorageClass,System.String)">
+            <summary>
+            Async Method to Upload Image and set Url and Thumbnail Url for ImageData
+            </summary>
+            <param name="aAmazonS3">AmazonS3 instance</param>
+            <param name="aFileStream">Image File Stream</param>
+            <param name="aFullFileName">Full File Name</param>
+            <param name="aAccessType">S3 Access Type</param>
+            <param name="aStorageType">S3 storage Type</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.ProvideUrl(LeadSoft.Adapter.AWS.AmazonS3)">
+            <summary>
+            Method that provides the permanent URL from a file on Amazon S3 and sets it into class
+            </summary>
+            <param name="aAmazonS3">Amazon S3 instance</param>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.ProvideTemporaryUrl(LeadSoft.Adapter.AWS.AmazonS3,System.Int32)">
+            <summary>
+            Method that provides the temporary URL from a file on Amazon S3 and sets it into class
+            </summary>
+            <param name="aAmazonS3">Amazon S3 instance</param>
+            <param name="aSeconds">Seconds to expire</param>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.DeleteContentAsync(LeadSoft.Adapter.AWS.AmazonS3)">
+            <summary>
+            Method that deletes on S3 the file and clear class
+            </summary>
+            <param name="aAmazonS3">Amazon S3 instance</param>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudFile.Clear">
+            <summary>
+            Clear all properties
+            </summary>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage">
+            <summary>
+            Image abstraction of Cloud File
+            </summary>
+            <remarks>
+            Use this class to store images on S3 with thumbnail.
+            You can also resize images or create thumbnails from it.
+            This class doesn't use System.Drawing, so it's Linux safe.
+            </remarks>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.Title">
+            <summary>
+            Title for image
+            Use file name if title is not applicable
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.Description">
+            <summary>
+            Description for image
+            Subtitle? Maybe it's a good place to store it
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.ThumbnailUrl">
+            <summary>
+            Image thumbnail Uri
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.ThumbnailKey">
+            <summary>
+            Image thumbnail key, if it was used some kind of container service
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.#ctor">
+            <summary>
+            Empty Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.#ctor(System.String,LeadSoft.Common.Library.Enumerators.Enums.FileExtension,System.String,System.Int64,System.String,System.String,System.Uri,System.Uri,System.String)">
+            <summary>
+            Main Constructor
+            </summary>
+            <remarks>
+            Use File extension to set the mime type on file. To get that, there is a function to find the correct enum.
+            If the file extension doesn't exist, create a new enum! Or request it on developers e-mail.
+                Enums.GetByDescription FileExtension (fileType)
+            </remarks>
+            <param name="aBucket">Bucket name</param>
+            <param name="aFileExtension">File mime type in FileExtension.</param>
+            <param name="aKey">cloud key</param>
+            <param name="aSize">file size in bytes</param>
+            <param name="aTitle">file size in bytes</param>
+            <param name="aDescription">file size in bytes</param>
+            <param name="aUrl">file size in bytes</param>
+            <param name="aThumbnailUrl">file size in bytes</param>
+            <param name="aThumbnailKey">file size in bytes</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.ProvideUrl(LeadSoft.Adapter.AWS.AmazonS3)">
+            <summary>
+            Method that provides the permanent URL from a image file and it's thumbnail on Amazon S3 and sets it into class
+            </summary>
+            <param name="aAmazonS3">Amazon S3 instance</param>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.ProvideTemporaryUrl(LeadSoft.Adapter.AWS.AmazonS3,System.Int32)">
+            <summary>
+            Method that provides the temporary URL from a image file and it's thumbnail on Amazon S3 and sets it into class
+            </summary>
+            <param name="aAmazonS3">Amazon S3 instance</param>
+            <param name="aSeconds">Seconds to expire</param>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.CreateThumbnail(SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgba32},System.Int32,System.Int32)">
+            <summary>
+            Method that creates a thumbnail from a image stream
+            </summary>
+            <param name="aImage">Image stream</param>
+            <param name="aWidth">Width</param>
+            <param name="aHeight">Height</param>
+            <returns>Thumbnail image stream</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.Resize(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Method that resizes a image stream
+            </summary>
+            <param name="aImageStream">Image stream</param>
+            <param name="aWidth">Width</param>
+            <param name="aHeight">Height</param>
+            <returns>Resized image stream</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.DeleteContentAsync(LeadSoft.Adapter.AWS.AmazonS3)">
+            <summary>
+            Method that deletes on S3 the image and it's thumbnail and clear class
+            </summary>
+            <param name="aAmazonS3">Amazon S3 instance</param>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.CloudImage.Clear">
+            <summary>
+            Clear all properties
+            </summary>
+            <returns>Self for chain call.</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData">
+            <summary>
+            Class that stores Image properties
+            
+            TODO: In a near future, this class should extends IImageData
+            </summary>
+            <summary>
+            Image Data methods
+            
+            TODO: Extending a future Interface feature, methods as delete, resize, download, and other stuff must be developed here
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.Id">
+            <summary>
+            Unique image Id
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.Title">
+            <summary>
+            Title for image
+            Use file name if title is not applicable
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.Description">
+            <summary>
+            Description for image
+            Subtitle? Maybe it's a good place to store it
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.Bytes">
+            <summary>
+            Image size in bytes.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.Url">
+            <summary>
+            Image Uri
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.ThumbnailUrl">
+            <summary>
+            Image thumbnail Uri
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.Key">
+            <summary>
+            Image key, if it was used some kind of container service
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.ThumbnailKey">
+            <summary>
+            Image thumbnail key, if it was used some kind of container service
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.#ctor">
+            <summary>
+            base constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.#ctor(System.String,System.String)">
+            <summary>
+            base constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.UploadAsync(LeadSoft.Adapter.AWS.AmazonS3,System.IO.Stream,System.String,Amazon.S3.S3CannedACL,Amazon.S3.S3StorageClass,System.String,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Async Method to Upload Image and set Url and Thumbnail Url for ImageData
+            </summary>
+            <param name="aAmazonS3">AmazonS3 instance</param>
+            <param name="aFileStream">Image File Stream</param>
+            <param name="aFullFileName">Full File Name</param>
+            <param name="aAccessType">S3 Access Type</param>
+            <param name="aStorageType">S3 storage Type</param>
+            <param name="aCreateThumbnail">Optional Create or not Thumbnail flag. Default: true.</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.SetId(System.Guid)">
+            <summary>
+            Sets a new Id to image
+            </summary>
+            <param name="aId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.CreateThumbnail(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            Method to create resized Thumbnail from Image
+            </summary>
+            <param name="aImage">Image</param>
+            <param name="aX">Image thumbnail X axis pixels</param>
+            <param name="aY">Image thumbnail Y axis pixels</param>
+            <returns>Stream</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.Resize(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Method to create resized image stream
+            </summary>
+            <param name="aFile">Image Stream</param>
+            <param name="aX">Image thumbnail X axis pixels</param>
+            <param name="aY">Image thumbnail Y axis pixels</param>
+            <returns>Stream</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData.ScaleImage(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            Auxiliar Method to resize image
+            </summary>
+            <param name="image"></param>
+            <param name="maxWidth"></param>
+            <param name="maxHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CEST">
+            <summary>
+            CEST Class
+            
+            O Código Especificador da Substituição Tributária, mais conhecido como CEST,
+            estabelece uma forma de identificar e uniformizar mercadorias e bens sujeitos
+            ao regime de substituição tributária, assim como a antecipação de recolhimento
+            do imposto referente às operações subsequentes.
+            </summary>
+            <summary>
+            CEST Class methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CEST.Code">
+            <summary>
+            CEST Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CEST.Description">
+            <summary>
+            CEST Description
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CEST.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CEST.#ctor(System.String,System.String)">
+            <summary>
+            Data Constructor
+            </summary>
+            <param name="aCode"></param>
+            <param name="aDescription"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CFOP">
+            <summary>
+            CFOP Class
+            
+            Código Fiscal de Operações e de Prestações ou sob a sigla CFOP é um código
+            do sistema tributarista brasileiro, determinado pelo governo.
+            É indicado nas emissões de notas fiscais, declarações, guias e escrituração de livros.
+            </summary>
+            <summary>
+            CFOP Class methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CFOP.Code">
+            <summary>
+            CFOP Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CFOP.Description">
+            <summary>
+            CFOP Description
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CFOP.Notes">
+            <summary>
+            CFOP Notes
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CFOP.Type">
+            <summary>
+            CFOP Type
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CFOP.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CFOP.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Data Constructor
+            </summary>
+            <param name="aCode"></param>
+            <param name="aDescription"></param>
+            <param name="aType"></param>
+            <param name="aNotes"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CNAE">
+            <summary>
+            CNAE Class
+            
+            A Classificação Nacional de Atividades Econômicas - CNAE é a classificação oficial
+            adotada pelo Sistema Estatístico Nacional do Brasil e pelos órgãos federais,
+            estaduais e municipais gestores de registros administrativos e demais instituições do Brasil.
+            </summary>
+            <summary>
+            CNAE Class methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CNAE.Code">
+            <summary>
+            CNAE Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CNAE.Description">
+            <summary>
+            CNAE Description
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CNAE.Structure">
+            <summary>
+            CNAE Structure
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CNAE.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CNAE.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Data Constructor
+            </summary>
+            <param name="aCode"></param>
+            <param name="aStructure"></param>
+            <param name="aDescription"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Fiscal.NCM">
+            <summary>
+            NCM Class
+            
+            Um código de oito dígitos, chamado de Nomeclatura Comum do Mercosul (NCM),
+            está presente em todas as notas fiscais emitidas de produtos nacionais ou importados.
+            A NCM identifica a natureza das mercadorias registradas naquele documento seguindo
+            uma ordem lógica e internacional.
+            </summary>
+            <summary>
+            NCM Class methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.NCM.Code">
+            <summary>
+            NCM Code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.NCM.Ex">
+            <summary>
+            NCM EX
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Fiscal.NCM.Description">
+            <summary>
+            NCM Description
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.NCM.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Fiscal.NCM.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Data Constructor
+            </summary>
+            <param name="aCode"></param>
+            <param name="aEx"></param>
+            <param name="aDescription"></param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Address">
+            <summary>
+            Address Object
+            </summary>
+            <summary>
+            Address methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Description">
+            <summary>
+            Address description.
+            - Country home
+            - Matrix office
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Street">
+            <summary>
+            Street name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Number">
+            <summary>
+            Number of address
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Neighborhood">
+            <summary>
+            Neighborhood name
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Complement">
+            <summary>
+            Complement
+            - House 2
+            - Apartment 3
+            - 15th floor
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Reference">
+            <summary>
+            Some reference
+            - Next to Plaza
+            - Close to main cemetery gate
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.ZIP">
+            <summary>
+            CEP / ZIP code
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.State">
+            <summary>
+            State / Unidade Federativa enum based
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.CityId">
+            <summary>
+            This Id comes from IBGE
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.City">
+            <summary>
+            City
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Country">
+            <summary>
+            Country enum
+            Brazil is default
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.IsBilling">
+            <summary>
+            Is this a billing address? If yes, place true
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Address.Geolocation">
+            <summary>
+            Geolocation information
+            Item 1: Latitude
+            Item 2: Longitude
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Address.#ctor(System.String,LeadSoft.Common.Library.Enumerators.Enums.Country)">
+            <summary>
+            Constructor for Address. Requires a description and a country
+            </summary>
+            <param name="aDescription">Address description</param>
+            <param name="aCountry">Country enum based. Default: BR</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Address.ToLine">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Address.AutofillAsync">
+            <summary>
+            This asyncronous method auto fill address information searching for CEP on Via CEP API
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Address.op_Explicit(LeadSoft.Adapter.ViaCep.DTOs.DTOFoundAddress)~LeadSoft.Common.GlobalDomain.Entities.Address">
+            <summary>
+            This operator points to Common.Library.ViaCEPService.DTOs
+            Autofill Address with found Cep on Via CEP API
+            </summary>
+            <param name="aDto">DTOFoundAddress</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Addresses">
+            <summary>
+            Addresses list
+            </summary>
+            <summary>
+            Addresses list methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Addresses.Primary">
+            <summary>
+            Primary Address 
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Addresses.This">
+            <summary>
+            List of Address type
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.#ctor">
+            <summary>
+            Constructor builds this list
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.DTOAddress})">
+            <summary>
+            Create Adresses and set list from informed one
+            </summary>
+            <param name="aList">List of DTOAddress</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.SetPrimary(LeadSoft.Common.GlobalDomain.Entities.Address)">
+            <summary>
+            Insert an Address and make it primary
+            </summary>
+            <param name="aAddress">Address to add as primary</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.List">
+            <summary>
+            List all addresses
+            </summary>
+            <returns>List of Address objects</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.Any">
+            <summary>
+            Checks if there are any registry
+            </summary>
+            <returns><see langword="true"/> or <see langword="false"/></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.GetPrimary">
+            <summary>
+            Get primary Address
+            </summary>
+            <returns>Primary Address object from list</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.GetAddress(System.String)">
+            <summary>
+            Get Address by description
+            </summary>
+            <param name="aDescription">Address Description</param>
+            <returns>Address object from list found by description</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.MakePrimary(System.String)">
+            <summary>
+            Make existing address as primary
+            </summary>
+            <param name="aAddressDescription">Address description</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.Add(LeadSoft.Common.GlobalDomain.Entities.Address)">
+            <summary>
+            Includes an Address in list
+            Address cannot have duplicated Description
+            </summary>
+            <param name="aAddress">Address class to be added to list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.Modify(LeadSoft.Common.GlobalDomain.Entities.Address)">
+            <summary>
+            Modify an Address in list. It is found by description
+            </summary>
+            <param name="aAddress">Address class to be added to list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Addresses.Remove(System.String)">
+            <summary>
+            Removes an address from list by Description
+            </summary>
+            <param name="aDescription">Address description to find</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts">
+            <summary>
+            Bank Accounts
+            </summary>
+            <summary>
+            Bank Accounts Methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.This">
+            <summary>
+            List of BankAccounts type
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.#ctor">
+            <summary>
+            Constructor builds this list
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccount})">
+            <summary>
+            Create BankAccounts and set list from informed one
+            </summary>
+            <param name="aList">List of DTOAddress</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.List">
+            <summary>
+            List all Bank Accounts
+            </summary>
+            <returns>List of Accounts objects</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.Any">
+            <summary>
+            Checks if there are any registry
+            </summary>
+            <returns><see langword="true"/> or <see langword="false"/></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.GetBankAccount(System.String,System.String,System.String)">
+            <summary>
+            Get Address by description
+            </summary>
+            <param name="aAccountNumber">Account Number</param>
+            <param name="aAgencyNumber">Agency Number</param>
+            <param name="aCode">Bank Code</param>
+            <returns>Accounts object from list found by description</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.Add(LeadSoft.Common.GlobalDomain.Entities.BankAccount)">
+            <summary>
+            Includes an Accounts in list
+            Account cannot have duplicated Description
+            </summary>
+            <param name="aAccount">Bank Account class to be added to list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.Modify(LeadSoft.Common.GlobalDomain.Entities.BankAccount)">
+            <summary>
+            Modify an Bank Account in list. It is found by description
+            </summary>
+            <param name="aAccount">Bank Account class to be added to list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Bank.BankAccounts.Remove(LeadSoft.Common.GlobalDomain.Entities.BankAccount)">
+            <summary>
+            Removes an Bank Account from list by Parameters
+            </summary>
+            <param name="aAccount">Account parameters to find</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Contact">
+            <summary>
+            Contact abstract class
+            </summary>
+            <summary>
+            Contact abstract class
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Contact.Type">
+            <summary>
+            Contact type enum
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Contact.Name">
+            <summary>
+            Nome do contato
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Contact.CanNotify">
+            <summary>
+            According to LGPD, this field is required and must be filled by user, if he want's to disable notifications.
+            This flag tells system if it can be used to receive notifications (e-mail/sms/call)
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Contact.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Contact.#ctor(LeadSoft.Common.GlobalDomain.Entities.Enums.ContactType)">
+            <summary>
+            Constructor requires a Contact type
+            </summary>
+            <param name="aContactType">Contact type enum</param>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Enums">
+            <summary>
+            Contact enumerators
+            </summary>
+            <summary>
+            Document enumerators
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Document">
+            <summary>
+            Document informations
+            </summary>
+            <summary>
+            Document methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Document.Type">
+            <summary>
+            Document type enum
+             - Passport
+             - Driver license
+             - Others
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Document.Number">
+            <summary>
+            Oficial number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Document.Issue">
+            <summary>
+            Date when document was issued, if needed
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Document.Expiration">
+            <summary>
+            Date when document expires, if needed
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.#ctor">
+            <summary>
+            Base constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.#ctor(System.String)">
+            <summary>
+            For Document creation, you must set it's type before!
+            </summary>
+            <param name="aNumber">Document number</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.#ctor(LeadSoft.Common.GlobalDomain.Entities.Enums.DocumentType,System.String)">
+            <summary>
+            For Document creation, you must set it's type before!
+            </summary>
+            <param name="aDocumentType">Document Type enum</param>
+            <param name="aNumber">Document number</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.CreateInscricaoEstadualIsento">
+            <summary>
+            Method that creates a new Inscrição Estadual Isento object
+            </summary>
+            <returns>Document</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.SetIsentoInscricaoEstadual">
+            <summary>
+            Method that sets sets this document as Incrição Estadual Isenta
+            </summary>
+            <returns>Document</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.CreateInscricaoMunicipalIsento">
+            <summary>
+            Method that creates a new Inscrição Municipal Isento object
+            </summary>
+            <returns>Document</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.SetIsentoInscricaoMunicipal">
+            <summary>
+            Method that sets sets this document as Incrição Municipal Isenta
+            </summary>
+            <returns>Document</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.GetFormattedCPForCNPJ">
+            <summary>
+            Gets formatted CPF or CNPJ Document number
+            </summary>
+            <returns>Formatted CPF or CNPJ</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.SetNumber(System.String)">
+            <summary>
+            Sets document number, if valid
+            </summary>
+            <param name="aNumber">Document number</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.GetFileName(LeadSoft.Common.Library.Enumerators.Enums.FileExtension,System.Boolean)">
+            <summary>
+            Generate document's file name
+            -> Document Type description _ Alphanumeric number _ Name Generation Date and Time (Optional file extension)
+            "CNH_1234569876_2020_05_12_12_23_47.pdf" or "CNH_1234569876_2020-05-12_12-23-47"
+            </summary>
+            <param name="aFileExtension">File extension to be concatenated. Default: None. Then File extension will be blank</param>
+            <param name="aPrintDateTime">Prints current datetime. Default: False</param>
+            <returns>Document's file name</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.SetExpiration(System.DateTime)">
+            <summary>
+            Set expiration date
+            </summary>
+            <param name="aExpiration">Expiration date</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.ClearExpiration">
+            <summary>
+            Set Expiration date to null
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.IsValid">
+            <summary>
+            Check if a CPF or a CNPJ is Valid
+            </summary>
+            <returns>True if valid.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.TryCreateCPForCNPJ(System.String)">
+            <summary>
+            Method that tries to create a Document by CPF or CNPJ number
+            </summary>
+            <param name="aCpfCnpj">CPF or CNPJ</param>
+            <returns>A Document or null in case of failure</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.VerifyCPForCNPJ(System.String)">
+            <summary>
+            Check if given CPF or CNPJ is Valid
+            </summary>
+            <param name="aCpfCnpj">CPF or CNPJ to validate</param>
+            <returns>Valid or Invalid (Boolean)</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Document.GetDocumentTypeCPForCNPJ(System.String)">
+            <summary>
+            Gets a document number and returns a document type for CPF or CNPJ
+            </summary>
+            <param name="aDocumentNumber">Document number</param>
+            <returns>Document type</returns>
+            <exception cref="T:System.OperationCanceledException"></exception>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.DocumentExtensions.IsCpf(System.String)">
+            <summary>
+            Determines whether the specified string is a valid CPF (Cadastro de Pessoas Físicas) number.
+            </summary>
+            <remarks>A CPF number is considered valid if it consists of 11 digits and passes the CPF
+            validation algorithm. This method removes any non-numeric characters from the input string before
+            validation.</remarks>
+            <param name="aCPF">The string representing the CPF number to validate. It should contain only numeric characters.</param>
+            <returns><see langword="true"/> if the specified string is a valid CPF number; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.DocumentExtensions.IsCnpj(System.String)">
+            <summary>
+            Determines whether the specified string is a valid CNPJ (Cadastro Nacional da Pessoa Jurídica) number.
+            </summary>
+            <remarks>A CNPJ is a 14-digit number used to identify Brazilian companies. This method checks the validity of
+            the CNPJ by verifying its check digits according to the official algorithm.</remarks>
+            <param name="aCNPJ">The string to validate as a CNPJ number. It must contain only numeric characters.</param>
+            <returns><see langword="true"/> if the specified string is a valid CNPJ number; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.DocumentExtensions.FormatCPF(System.String)">
+            <summary>
+            Formats a given CPF (Cadastro de Pessoas Físicas) string by inserting standard punctuation.
+            </summary>
+            <remarks>This method assumes the input string contains only digits and no existing
+            punctuation.</remarks>
+            <param name="aCpf">The CPF string to format. Must be exactly 11 digits long.</param>
+            <returns>A formatted CPF string with periods and a hyphen inserted.  If the input string is not 11 digits long, the
+            original string is returned unmodified.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.DocumentExtensions.FormatCNPJ(System.String)">
+            <summary>
+            Formats a CNPJ (Cadastro Nacional da Pessoa Jurídica) string by adding standard punctuation.
+            </summary>
+            <param name="aCnpj">The CNPJ string to format. Must be exactly 14 digits long.</param>
+            <returns>A formatted CNPJ string with periods, a slash, and a hyphen added in the standard positions. If the input
+            string is not 14 digits long, the original string is returned unmodified.</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Documents">
+            <summary>
+            Documents list object
+            </summary>
+            <summary>
+            Documents Methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Documents.This">
+            <summary>
+            List of document type
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.#ctor">
+            <summary>
+            Constructor builds this list
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.DTODocument})">
+            <summary>
+            Create Documents and set list from informed one
+            </summary>
+            <param name="aList">List of DTODocument</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.GetDocument(System.String)">
+            <summary>
+            Gets a document by number
+            </summary>
+            <param name="aNumber">Document Number</param>
+            <returns>Document object</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.GetDocument(LeadSoft.Common.GlobalDomain.Entities.Enums.DocumentType)">
+            <summary>
+            Gets a document by type
+            </summary>
+            <param name="aDocumentType">Document Type</param>
+            <returns>Document object</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.List">
+            <summary>
+            List all documents
+            </summary>
+            <returns>List of Document objects</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.Any">
+            <summary>
+            Checks if there are any registry
+            </summary>
+            <returns><see langword="true"/> or <see langword="false"/></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.Add(LeadSoft.Common.GlobalDomain.Entities.Document)">
+            <summary>
+            Includes a document in list
+            Document number cannot be duplicated on same expiration date
+            </summary>
+            <param name="aDocument">Document class to be added to list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Documents.Remove(LeadSoft.Common.GlobalDomain.Entities.Enums.DocumentType)">
+            <summary>
+            Removes a document from list by Document Type
+            </summary>
+            <param name="aDocumentType">Document type to be removed from list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.EmailContact">
+            <summary>
+            Email contact class
+            Inherits from Contact
+            </summary>
+            <summary>
+            Email contact methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.EmailContact.Address">
+            <summary>
+            Address
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.EmailContact.#ctor(LeadSoft.Common.GlobalDomain.Entities.Enums.ContactType,System.String)">
+            <summary>
+            Base Constructor requires a Contact type
+            </summary>
+            <param name="aContactType">Contact type enum</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.EmailContact.IsValidEmail(System.String)">
+            <summary>
+            Checks if string is an e-mail
+            </summary>
+            <param name="aEmail">E-mail Address</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Emails">
+            <summary>
+            E-mails list
+            </summary>
+            <summary>
+            Account emails list methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Emails.Primary">
+            <summary>
+            Primary E-mail Address
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Emails.This">
+            <summary>
+            List of EmailContact type
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact})">
+            <summary>
+            Create Emails and set list from informed one
+            </summary>
+            <param name="aList">List of DTOEmailContact</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.SetPrimary(LeadSoft.Common.GlobalDomain.Entities.EmailContact)">
+            <summary>
+            Insert an email and make it primary
+            </summary>
+            <param name="aEmailContact">E-mail address to add as primary</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.GetPrimary">
+            <summary>
+            Get primary Email Contact
+            </summary>
+            <returns>Primary E-mail Contact object from list</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.GetEmail(System.String)">
+            <summary>
+            Get E-mail Contact by address
+            </summary>
+            <param name="aAddress">E-mail Address</param>
+            <returns>E-mail Contact object from list found by address</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.List">
+            <summary>
+            List all e-mails
+            </summary>
+            <returns>List of E-mail Contact objects</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.Any">
+            <summary>
+            Checks if there are any registry
+            </summary>
+            <returns><see langword="true"/> or <see langword="false"/></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.MakePrimary(System.String)">
+            <summary>
+            Make existing e-mail as primary
+            </summary>
+            <param name="aEmailAddress">E-mail Address</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.Add(LeadSoft.Common.GlobalDomain.Entities.EmailContact,System.Boolean)">
+            <summary>
+            Includes an email in list
+            Emails cannot have duplicated address
+            </summary>
+            <param name="aEmail">Email contect class to be added to list</param>
+            <param name="aHalfIfError">Flag that halts execution if error. Default: true</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.Modify(System.String,LeadSoft.Common.GlobalDomain.Entities.EmailContact)">
+            <summary>
+            Modify an E-mail Contact in list. It is found by address
+            </summary>
+            <param name="aEmail">Old Email Address</param>
+            <param name="aNewEmail">New Email Address</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.Remove(System.String)">
+            <summary>
+            Removes an email number from list by Address
+            </summary>
+            <param name="aNumber">Email address to find</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.PhoneContact">
+            <summary>
+            Phone contact class
+            Inherits from Contact
+            </summary>
+            <summary>
+            Phone contact methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.DDI">
+            <summary>
+            Discagem Direta Internacional
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.DDD">
+            <summary>
+            Discagem Direta à Distância
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.Number">
+            <summary>
+            Phone number
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.#ctor(LeadSoft.Common.GlobalDomain.Entities.Enums.ContactType,System.String,System.String)">
+            <summary>
+            Base Constructor requires a Contact type
+            </summary>
+            <param name="aContactType">Contact type enum</param>
+            <param name="aDDD">DDD number</param>
+            <param name="aNumber">Phone number</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.#ctor(LeadSoft.Common.GlobalDomain.Entities.Enums.ContactType,System.String)">
+            <summary>
+            Base Constructor requires a Contact type
+            </summary>
+            <param name="aContactType">Contact type enum</param>
+            <param name="aNumber">Phone number (ddnnnnnnnnn)</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.SetDDI(System.String)">
+            <summary>
+            Sets DDI number
+            </summary>
+            <param name="aDDI">DDI Number</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.GetPlain">
+            <summary>
+            Gets phone number, DDI and DDD in a simple format
+            </summary>
+            <returns>5511978969876</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.GetStandard">
+            <summary>
+            Gets phone number, DDI and DDD on standard format
+            </summary>
+            <returns>+5511978969876</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.GetPretty">
+            <summary>
+            Gets phone number and DDD in a pretty format
+            </summary>
+            <returns>(11) 9-7896-9876</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.MaskPhone(System.String)">
+            <summary>
+            Mask phone function
+            </summary>
+            <param name="aPhone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.IsValidPhone(System.String)">
+            <summary>
+            Validate Phone Contact. Pattern: (xx) xxxxx-xxxx
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Phones">
+            <summary>
+            Account phones list
+            </summary>
+            <summary>
+            Account phones list methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Phones.Primary">
+            <summary>
+            Primary phone number
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Phones.This">
+            <summary>
+            List of PhoneContact type
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContact})">
+            <summary>
+            Create Phones and set list from informed one
+            </summary>
+            <param name="aList">List of PhoneContact</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.SetPrimary(LeadSoft.Common.GlobalDomain.Entities.PhoneContact)">
+            <summary>
+            Insert a phone number and make it primary
+            </summary>
+            <param name="aPhoneContact">Phone contact to add as primary</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.GetPrimary">
+            <summary>
+            Get primary Phone Contact
+            </summary>
+            <returns>Primary Phone Contact object from list</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.GetPhone(System.String)">
+            <summary>
+            Get Phone Contact by description
+            </summary>
+            <param name="aNumber">Phone Number</param>
+            <returns>Phone Contact object from list found by description</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.List">
+            <summary>
+            List all phones
+            </summary>
+            <returns>List of Phone Contact objects</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.Any">
+            <summary>
+            Checks if there are any registry
+            </summary>
+            <returns><see langword="true"/> or <see langword="false"/></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.MakePrimary(System.String)">
+            <summary>
+            Make existing phone number as primary
+            </summary>
+            <param name="aPhoneNumber">Phone Number</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.Add(LeadSoft.Common.GlobalDomain.Entities.PhoneContact)">
+            <summary>
+            Includes a phone in list
+            Phones cannot have duplicated number
+            </summary>
+            <param name="aPhone">Phone contect class to be added to list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.Modify(System.String,LeadSoft.Common.GlobalDomain.Entities.PhoneContact)">
+            <summary>
+            Modify a phone in list. It is found by number
+            </summary>
+            <param name="aNumber">Phone Contact class to be added to list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.Remove(System.String)">
+            <summary>
+            Removes a phone number from list by Number
+            </summary>
+            <param name="aNumber">Phone number to find</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Period">
+            <summary>
+            Period Class
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Period.Start">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Period.End">
+            <summary>
+            DateTime value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.#ctor">
+            <summary>
+            Parameterless constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.#ctor(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Initial Constructor
+            </summary>
+            <param name="aStart">Start Date</param>
+            <param name="aEnd">End Date</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.#ctor(LeadSoft.Common.Library.Enumerators.Enums.Month,LeadSoft.Common.Library.Enumerators.Enums.Month)">
+            <summary>
+            Constructor receives a month of start and a month of end and creates a corresponding Period
+            If the specified month is less than the actual month, then the Period starts or ends in the
+            next year.
+            If Start Month is greater than End Month then the Period ends one year later than Start. 
+            </summary>
+            <param name="aMonthStart">Start Month</param>
+            <param name="aMonthEnd">End Month</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.#ctor(System.Int32)">
+            <summary>
+            Constructor receives an interval of days and creates a Period that Starts "now" and ends
+            aDaysInterval laters 
+            </summary>
+            <param name="aDaysInterval">Start Month</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.Contains(System.DateTime)">
+            <summary>
+            Auxiliar method to verify if a Date Time is in between the Period
+            </summary>
+            <param name="aDateTime">DateTime</param>
+            <returns>Bool</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.IsInIt">
+            <summary>
+            Determinies if current date time (UTC) is in it current period
+            </summary>
+            <returns><see langword="true"/> or <see langword="false"/></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.SetStartTime(System.DateTime)">
+            <summary>
+            Method to assign the Start time from period and verify if is a valid assignment
+            </summary>
+            <param name="aStart">Start Date</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.SetEndTime(System.DateTime)">
+            <summary>
+            Method to assign the End time from period and verify if is a valid assignment
+            </summary>
+            <param name="aEnd">End Date</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.DaysInterval">
+            <summary>
+            Method to get number of days between Start and End
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.GetSeconds">
+            <summary>
+            Get all seconds between dates
+            </summary>
+            <returns>List of seconds.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.GetMinutes">
+            <summary>
+            Get all minutes between dates
+            </summary>
+            <returns>List of minutes.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.GetHours">
+            <summary>
+            Get all hours between dates
+            </summary>
+            <returns>List of hours.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.GetDays">
+            <summary>
+            Get all days between dates
+            </summary>
+            <returns>List of days.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.GetMonths">
+            <summary>
+            Get all months between dates
+            </summary>
+            <returns>List of Months.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.GetYears">
+            <summary>
+            Get all years between dates
+            </summary>
+            <returns>List of years.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.IsEmpty">
+            <summary>
+            Check if <see langword="object"/> has date
+            </summary>
+            <returns>True or false.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Period.Clear">
+            <summary>
+            Clears Stard and end dates
+            </summary>
+            <returns>Self for chain calls.</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price">
+            <summary>
+            Price class
+            </summary>
+            <summary>
+            Price class methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.Vigency">
+            <summary>
+            Value vigency
+            Rules: Required
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.Value">
+            <summary>
+            Price value
+            Rules: Greater or Equal to 0
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.Cost">
+            <summary>
+            Cost value
+            Rules: Greater or Equal to zero
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.Note">
+            <summary>
+            Notes that gives details for a price
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.#ctor">
+            <summary>
+            Base constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.#ctor(System.Double,System.Double)">
+            <summary>
+            Double Value based constructor overload
+            </summary>
+            <param name="aValue">Double Price value</param>
+            <param name="aCost">Double Cost value</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.#ctor(System.DateTime,System.Double,System.Double)">
+            <summary>
+            Double Value based constructor with vigency overload
+            </summary>
+            <param name="aVigency"></param>
+            <param name="aValue"></param>
+            <param name="aCost"></param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.#ctor(System.Decimal,System.Decimal)">
+            <summary>
+            Value based constructor with vigency based constructor
+            </summary>
+            <param name="aValue">Price value</param>
+            <param name="aCost">Cost value</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.#ctor(System.DateTime,System.Decimal,System.Decimal)">
+            <summary>
+            Value based constructor with vigency
+            </summary>
+            <param name="aVigency">Price vigency</param>
+            <param name="aValue">Price value</param>
+            <param name="aCost">Cost value</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.SetCost(System.Double)">
+            <summary>
+            Method available to set Double cost to price overload
+            </summary>
+            <param name="aCost">Double Cost value</param>
+            <returns>This for chain calls.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.SetCost(System.Decimal)">
+            <summary>
+            Method available to set cost to price
+            </summary>
+            <param name="aCost">Cost value</param>
+            <returns>This for chain calls.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.GetDistanceFromNow">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Price.Zero">
+            <summary>
+            Get zero price Value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices">
+            <summary>
+            Prices class
+            </summary>
+            <summary>
+            Prices class
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.This">
+            <summary>
+            Value vigency
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.CurrentValue">
+            <summary>
+            Price value
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.#ctor">
+            <summary>
+            Constructor builds this list
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.#ctor(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price[])">
+            <summary>
+            Price list based constructor
+            </summary>
+            <param name="aPrices">Prices array</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice})">
+            <summary>
+            Create Prices and set list from informed one
+            </summary>
+            <param name="aList">List of DTOPrice</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.GetValue(System.Nullable{System.DateTime})">
+            <summary>
+            Gets a price by vicency
+            </summary>
+            <param name="aVigency">Optional Vigency. If null, brings current</param>
+            <returns>Price object</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.List">
+            <summary>
+            List all price
+            </summary>
+            <returns>List of Price objects</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.Last(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="aTake"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.Add(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)">
+            <summary>
+            Includes a price in list
+            Price vigency cannot be duplicated
+            </summary>
+            <param name="aPrice">Price to be added</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.Add(System.Decimal,System.Decimal)">
+            <summary>
+            Includes a price in list
+            Price vigency cannot be duplicated
+            </summary>
+            <param name="aValue">Price value to be added</param>
+            <param name="aCost">Optional Cost value</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.Add(System.Double,System.Double)">
+            <summary>
+            Includes a Double price in list
+            Price vigency cannot be duplicated
+            </summary>
+            <param name="aValue">Price Double value to be added</param>
+            <param name="aCost">Optional Cost Double value</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.Add(System.DateTime,System.Decimal,System.Decimal)">
+            <summary>
+            Includes a price on informed vigency in list
+            Price vigency cannot be duplicated
+            </summary>
+            <param name="aVigency">Vigency</param>
+            <param name="aValue">Price value to be added</param>
+            <param name="aCost">Optional Cost value</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.Add(System.DateTime,System.Double,System.Double)">
+            <summary>
+            Includes a double price on informed vigency in list
+            Price vigency cannot be duplicated
+            </summary>
+            <param name="aVigency">Vigency</param>
+            <param name="aValue">Price double value to be added</param>
+            <param name="aCost">Optional Cost double value</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Pricing.Prices.Remove(System.DateTime)">
+            <summary>
+            Removes a price from list by Vigency
+            </summary>
+            <param name="aVigency">Price type to be removed from list</param>
+            <returns>Self for Chain Call</returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Integration">
+            <summary>
+            Integration Class
+            </summary>
+            <summary>
+            Integration Class methods
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Integration.IntegrationServiceType">
+            <summary>
+            Integration Type
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Integration.AppKey">
+            <summary>
+            App Key
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Integration.AppSecret">
+            <summary>
+            App Secret
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Integration.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Integration.SetSecret(System.String)">
+            <summary>
+            Sets App Secret with Crypt
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Integration.ExposeSecret">
+            <summary>
+            Gets exposed App Secret
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Integrations.#ctor">
+            <summary>
+            Constructor builds this list
+            </summary>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValid">
+            <summary>
+            Classe abstrata base que implementa o comportamento de validação para objetos. 
+            Esta classe implementa também a interface <see cref="T:LeadSoft.Common.GlobalDomain.Entities.Validations.IValidation"/> para fornecer um mecanismo padrão de validação.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValid.ValidationResults">
+            <summary>
+            Represents a collection of validation results for an operation or object.
+            </summary>
+            <remarks>
+            This property holds the results of validation checks, where each result provides
+            details about  a specific validation error or success. If no validation has been performed or no results are
+            available, the value will be <see langword="null"/>.
+            </remarks>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValid.IsInvalid">
+            <summary>
+            Gets a value indicating whether the current state is valid.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValid.Validate">
+            <summary>
+            Realiza a validação do objeto atual e retorna os próprio objeto com suas devidas validações.
+            </summary>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista de erros é esvaziada. Caso contrário, ela é preenchida com os erros de validação e o objeto é retornado, sem exceptions.
+            </remarks>
+            <returns>
+            Próprio objeto, caso seja válido.
+            </returns>
+            <example>
+            object obj = new().Validate();
+            </example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValid.StrictValidate">
+            <summary>
+            Realiza a validação restritiva do objeto atual e retorna os próprio objeto apenas caso esteja válido.
+            </summary>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista de erros é esvaziada. Caso contrário, ela é preenchida com os erros de validação e é lançada uma Bad Request App Exception.
+            </remarks>
+            <returns>
+            Próprio objeto, caso seja válido.
+            </returns>
+            <example>
+            object obj = new().Validate();
+            </example>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.BadRequestAppException">Erros de validação nas propriedades.</exception>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValid.IsValid(System.Collections.Generic.IList{System.ComponentModel.DataAnnotations.ValidationResult}@)">
+            <summary>
+            Realiza a validação do objeto atual utilizando as anotações de dados aplicadas em suas propriedades.
+            </summary>
+            <param name="oValidationResults">Lista que será preenchida com os resultados da validação, caso existam erros.</param>
+            <returns>
+            Retorna <see langword="true"/> se a validação for bem-sucedida, ou <see langword="false"/> se houver erros de validação.
+            </returns>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista <paramref name="oValidationResults"/> é esvaziada. Caso contrário, ela é preenchida com os erros de validação.
+            </remarks>
+            <example>
+             if (object.IsValid(out var errors))
+                return object;
+             else
+                throw new BadRequestAppExeption(errors);
+            </example>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValidCollection">
+            <summary>
+            Classe abstrata base que implementa o comportamento de validação para objetos de coleção base. 
+            Esta classe implementa a CollectionsBase <see cref="T:LeadSoft.Common.GlobalDomain.Entities.CollectionsBase"/> para fornecer básicos de uma entidade de coleção.
+            Implementa também a interface <see cref="T:LeadSoft.Common.GlobalDomain.Entities.Validations.IValidation"/> para fornecer um mecanismo padrão de validação.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValidCollection.ValidationResults">
+            <summary>
+            Represents a collection of validation results for an operation or object.
+            </summary>
+            <remarks>
+            This property holds the results of validation checks, where each result provides
+            details about  a specific validation error or success. If no validation has been performed or no results are
+            available, the value will be <see langword="null"/>.
+            </remarks>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValidCollection.IsInvalid">
+            <summary>
+            Gets a value indicating whether the current state is valid.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValidCollection.Validate">
+            <summary>
+            Realiza a validação do objeto atual e retorna os próprio objeto com suas devidas validações.
+            </summary>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista de erros é esvaziada. Caso contrário, ela é preenchida com os erros de validação e o objeto é retornado, sem exceptions.
+            </remarks>
+            <returns>
+            Próprio objeto, caso seja válido.
+            </returns>
+            <example>
+            object obj = new().Validate();
+            </example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValidCollection.StrictValidate">
+            <summary>
+            Realiza a validação restritiva do objeto atual e retorna os próprio objeto apenas caso esteja válido.
+            </summary>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista de erros é esvaziada. Caso contrário, ela é preenchida com os erros de validação e é lançada uma Bad Request App Exception.
+            </remarks>
+            <returns>
+            Próprio objeto, caso seja válido.
+            </returns>
+            <example>
+            object obj = new().Validate();
+            </example>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.BadRequestAppException">Erros de validação nas propriedades.</exception>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.AsValidCollection.IsValid(System.Collections.Generic.IList{System.ComponentModel.DataAnnotations.ValidationResult}@)">
+            <summary>
+            Realiza a validação do objeto atual utilizando as anotações de dados aplicadas em suas propriedades.
+            </summary>
+            <param name="oValidationResults">Lista que será preenchida com os resultados da validação, caso existam erros.</param>
+            <returns>
+            Retorna <see langword="true"/> se a validação for bem-sucedida, ou <see langword="false"/> se houver erros de validação.
+            </returns>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista <paramref name="oValidationResults"/> é esvaziada. Caso contrário, ela é preenchida com os erros de validação.
+            </remarks>
+            <example>
+             if (object.IsValid(out var errors))
+                return object;
+             else
+                throw new BadRequestAppExeption(errors);
+            </example>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Validations.IValidation">
+            <summary>
+            Define um contrato para validação de objetos.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.IValidation.Validate">
+            <summary>
+            Realiza a validação do objeto atual e retorna os próprio objeto caso esteja válido.
+            </summary>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista de erros é esvaziada. Caso contrário, ela é preenchida com os erros de validação e é lançada uma Bad Request App Exception.
+            </remarks>
+            <returns>
+            Próprio objeto, caso seja válido.
+            </returns>
+            <example>
+            object obj = new().Validate();
+            </example>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.BadRequestAppException">Erros de validação nas propriedades.</exception>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.IValidation.IsValid(System.Collections.Generic.IList{System.ComponentModel.DataAnnotations.ValidationResult}@)">
+            <summary>
+            Realiza a validação do objeto atual e retorna os resultados da validação.
+            </summary>
+            <param name="oValidationResults">Uma lista de <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult"/> que será preenchida com os resultados da validação.</param>
+            <returns>
+            Retorna <see langword="true"/> se o objeto for válido, ou <see langword="false"/> se houver erros de validação.
+            </returns>
+            <example>
+             if (object.IsValid(out var errors))
+                return object;
+             else
+                throw new BadRequestAppExeption(errors);
+            </example>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation">
+            <summary>
+            Representa uma versão simplificada da classe <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult"/> do DataAnnotations, 
+            utilizada para resultados de validação de objetos ou propriedades.
+            </summary>
+            <remarks>
+            Esta classe é especialmente útil quando se deseja uma versão mais enxuta e leve do ValidationResult original, 
+            mantendo apenas as informações essenciais como nomes dos membros e mensagens de erro.
+            </remarks>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation.MemberNames">
+            <summary>
+            Obtém a coleção dos nomes dos membros (propriedades ou campos) afetados pelo resultado da validação.
+            </summary>
+            <remarks>
+            A coleção retornada pode estar vazia, mas nunca será nula.
+            </remarks>
+            <example>
+            Exemplo de uso:
+            <code>
+            var resultado = new ValidationResult("Nome obrigatório", new[] {"Nome"});
+            Validation validacao = resultado;
+            foreach(var nomeMembro in validacao.MemberNames)
+            {
+                Console.WriteLine(nomeMembro); // imprime "Nome"
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation.ErrorMessage">
+            <summary>
+            Obtém a mensagem de erro associada a este resultado de validação.
+            </summary>
+            <remarks>
+            Pode retornar uma string nula ou vazia caso não exista uma mensagem específica.
+            </remarks>
+            <example>
+            Exemplo de uso:
+            <code>
+            var validacao = new ValidationResult("Idade deve ser maior que 18");
+            Validation resultado = validacao;
+            Console.WriteLine(resultado.ErrorMessage); // imprime "Idade deve ser maior que 18"
+            </code>
+            </example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation.op_Implicit(System.ComponentModel.DataAnnotations.ValidationResult)~LeadSoft.Common.GlobalDomain.Entities.Validations.Validation">
+            <summary>
+            Permite a conversão implícita de um objeto ValidationResult para Validation.
+            </summary>
+            <param name="validationResult">Objeto ValidationResult original.</param>
+            <remarks>
+            Retorna nulo caso o parâmetro fornecido seja nulo.
+            </remarks>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation.#ctor">
+            <summary>
+            Inicializa uma nova instância da classe <see cref="T:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation.From(System.Collections.Generic.IList{System.ComponentModel.DataAnnotations.ValidationResult})">
+            <summary>
+            Converte uma lista de objetos ValidationResult em uma lista de objetos Validation.
+            </summary>
+            <param name="validationResults">Lista contendo os objetos ValidationResult a serem convertidos.</param>
+            <returns>Uma lista contendo objetos Validation convertidos.</returns>
+            <example>
+            Exemplo de conversão de uma lista:
+            <code>
+            IList&lt;ValidationResult&gt; resultadosOriginais = [
+                new ValidationResult("Campo obrigatório", new[] { "Nome" }),
+                new ValidationResult("Formato inválido", new[] { "Email" })
+            ];
+            IList&lt;Validation&gt; validacoes = Validation.From(resultadosOriginais);
+            foreach(var validacao in validacoes)
+            {
+                Console.WriteLine(validacao.ErrorMessage);
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Validations.Validation.ToValidation(System.ComponentModel.DataAnnotations.ValidationResult)">
+            <summary>
+            Converte um objeto ValidationResult individual em Validation.
+            </summary>
+            <param name="validationResults">O objeto ValidationResult que será convertido.</param>
+            <returns>Um novo objeto Validation convertido.</returns>
+            <example>
+            Exemplo de conversão de um único objeto:
+            <code>
+            var resultadoOriginal = new ValidationResult("Senha obrigatória", new[] {"Senha"});
+            Validation validacao = Validation.ToValidation(resultadoOriginal);
+            Console.WriteLine(validacao.ErrorMessage); // imprime "Senha obrigatória"
+            </code>
+            </example>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.PagedList`1.IsEmpty">
+            <summary>
+            Method that checks if list is empty
+            </summary>
+            <returns>True if empty</returns>
+        </member>
+    </members>
+</doc>
