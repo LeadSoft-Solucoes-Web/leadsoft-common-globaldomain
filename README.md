@@ -2,7 +2,6 @@
 ####  Developers Common Global Domain © LeadSoft® 2025
 This package contains useful entities and classes for LeadSoft® or external applications that needs a huge amount of functions that makes easy developers day-by-day.
  
- 
 For any development and tool use question, contact developers@leadsoft.inf.br .
 
 #### [Nuget.Org: LeadSoft.Common.GlobalDomain](https://www.nuget.org/packages/LeadSoft.Common.GlobalDomain)
@@ -26,6 +25,7 @@ For any development and tool use question, contact developers@leadsoft.inf.br .
 Framework requirements to run:
  
 - Microsoft .NET 9.0 
+- Open Source (MIT License).
  
 ##  Development  
 Development by LeadSoft® Soluções Web Team.
