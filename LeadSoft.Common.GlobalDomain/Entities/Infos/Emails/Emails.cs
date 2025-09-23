@@ -12,7 +12,7 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// Primary E-mail Address
         /// </summary>
         [Required(ErrorMessage = "E-mail Address is required.")]
-        public string Primary { get; set; }
+        public string Primary { get; private set; } = string.Empty;
 
         /// <summary>
         /// List of EmailContact type

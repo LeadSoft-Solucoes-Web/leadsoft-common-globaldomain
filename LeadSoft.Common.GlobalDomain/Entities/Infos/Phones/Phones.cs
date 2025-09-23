@@ -8,7 +8,7 @@
         /// <summary>
         /// Primary phone number
         /// </summary>
-        public virtual string Primary { get; private set; }
+        public virtual string Primary { get; private set; } = string.Empty;
 
         /// <summary>
         /// List of PhoneContact type

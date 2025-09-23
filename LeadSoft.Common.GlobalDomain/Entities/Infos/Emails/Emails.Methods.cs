@@ -11,6 +11,13 @@ namespace LeadSoft.Common.GlobalDomain.Entities
     public partial class Emails
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Emails"/> class.
+        /// </summary>
+        public Emails()
+        {
+        }
+
+        /// <summary>
         /// Create Emails and set list from informed one
         /// </summary>
         /// <param name="aList">List of DTOEmailContact</param>

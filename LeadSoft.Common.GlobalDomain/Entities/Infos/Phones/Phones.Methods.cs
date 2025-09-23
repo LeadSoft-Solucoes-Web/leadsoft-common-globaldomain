@@ -10,6 +10,13 @@ namespace LeadSoft.Common.GlobalDomain.Entities
     public partial class Phones
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Phones"/> class.
+        /// </summary>
+        public Phones()
+        {
+        }
+
+        /// <summary>
         /// Create Phones and set list from informed one
         /// </summary>
         /// <param name="aList">List of PhoneContact</param>

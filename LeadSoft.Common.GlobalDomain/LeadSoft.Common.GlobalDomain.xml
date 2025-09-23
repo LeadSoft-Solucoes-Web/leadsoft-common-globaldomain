@@ -3264,6 +3264,11 @@
             List of EmailContact type
             </summary>
         </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LeadSoft.Common.GlobalDomain.Entities.Emails"/> class.
+            </summary>
+        </member>
         <member name="M:LeadSoft.Common.GlobalDomain.Entities.Emails.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact})">
             <summary>
             Create Emails and set list from informed one
@@ -3423,6 +3428,11 @@
         <member name="P:LeadSoft.Common.GlobalDomain.Entities.Phones.This">
             <summary>
             List of PhoneContact type
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LeadSoft.Common.GlobalDomain.Entities.Phones"/> class.
             </summary>
         </member>
         <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.#ctor(System.Collections.Generic.IList{LeadSoft.Common.GlobalDomain.DTOs.DTOPhoneContact})">
