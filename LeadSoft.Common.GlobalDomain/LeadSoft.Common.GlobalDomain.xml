@@ -3369,7 +3369,7 @@
             <param name="aDDD">DDD number</param>
             <param name="aNumber">Phone number</param>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.#ctor(LeadSoft.Common.GlobalDomain.Entities.Enums.ContactType,System.String)">
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.#ctor(LeadSoft.Common.GlobalDomain.Entities.Enums.ContactType,System.String,System.Boolean)">
             <summary>
             Base Constructor requires a Contact type
             </summary>

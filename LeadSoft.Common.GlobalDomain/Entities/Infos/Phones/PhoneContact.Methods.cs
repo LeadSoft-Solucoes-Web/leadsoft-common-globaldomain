@@ -27,10 +27,17 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// </summary>
         /// <param name="aContactType">Contact type enum</param>
         /// <param name="aNumber">Phone number (ddnnnnnnnnn)</param>
-        public PhoneContact(ContactType aContactType, string aNumber) : base(aContactType)
+        public PhoneContact(ContactType aContactType, string aNumber, bool aHaltOnError = true) : base(aContactType)
         {
             if (!aNumber.Length.IsWithin(10, 11))
-                throw new OperationCanceledException(ApplicationStatusMessage.InvalidPhoneNumber);
+                if (aHaltOnError)
+                    throw new OperationCanceledException($"{ApplicationStatusMessage.InvalidPhoneNumber} -> {aNumber}");
+                else
+                {
+                    DDD = "??";
+                    Number = aNumber;
+                    return;
+                }
 
             DDD = aNumber.OnlyNumeric()[..2];
             Number = aNumber.OnlyNumeric()[2..];
