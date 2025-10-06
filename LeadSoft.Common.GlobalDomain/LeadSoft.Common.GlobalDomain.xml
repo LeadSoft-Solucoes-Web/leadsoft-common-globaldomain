@@ -696,6 +696,15 @@
             </summary>
             <param name="aPagedList">Paged list of objects to be set</param>
         </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.#ctor(System.Collections.Generic.IEnumerable{`0},LeadSoft.Common.GlobalDomain.PagedRequest,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1"/> class with the specified list, paged
+            request, and total results count.
+            </summary>
+            <param name="aList">The list of items to include in the paged response.</param>
+            <param name="pagedRequest">The paged request details, including page number and size.</param>
+            <param name="aTotalResults">The total number of results available across all pages.</param>
+        </member>
         <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Int64)">
             <summary>
             Constructor based on an existing list, that sets inner base constructor with informed data.
@@ -705,25 +714,20 @@
             <param name="aCurrentPage">Current page number</param>
             <param name="aTotalResults">Count of total results</param>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.GetPagingHeader``1(Microsoft.AspNetCore.Mvc.IUrlHelper,System.String,``0)">
-            <summary>
-            Gets header paging intomation serialized object in Json string
-            </summary>
-            <typeparam name="TRequest">Request type</typeparam>
-            <param name="aUrl">Method Url</param>
-            <param name="aRouteName">Name of current route</param>
-            <param name="aDtoPagedRequestInheritance">DTO paged request inheritance to keep original params on query</param>
-            <returns></returns>
-        </member>
         <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedListResponse`1.GetSanitizedPagingHeader``1(Microsoft.AspNetCore.Mvc.IUrlHelper,System.String,``0)">
             <summary>
-            Gets sanitized header paging intomation serialized object in Json string
+            Generates a sanitized paging header as a JSON string for the current page context.
             </summary>
-            <typeparam name="TRequest">Request type</typeparam>
-            <param name="aUrl">Method Url</param>
-            <param name="aRouteName">Name of current route</param>
-            <param name="aDtoPagedRequestInheritance">DTO paged request inheritance to keep original params on query</param>
-            <returns></returns>
+            <remarks>The method constructs a <see cref="T:LeadSoft.Common.GlobalDomain.PagingMetadata"/> object using the current page
+            context and generates links for the previous and next pages if they exist. The resulting metadata is
+            serialized to a JSON string.</remarks>
+            <typeparam name="TRequest">The type of the paged request, which must inherit from <see cref="T:LeadSoft.Common.GlobalDomain.PagedRequest"/>.</typeparam>
+            <param name="aUrl">The URL helper used to generate links for pagination.</param>
+            <param name="aRouteName">The name of the route to use for generating pagination links.</param>
+            <param name="aDtoPagedRequestInheritance">The paged request object containing pagination parameters.</param>
+            <returns>A JSON string representing the paging metadata, including links to the current, previous, and next pages if
+            applicable.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if <typeparamref name="TRequest"/> does not inherit from <see cref="T:LeadSoft.Common.GlobalDomain.PagedRequest"/>.</exception>
         </member>
         <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOPagedRequest">
             <summary>
