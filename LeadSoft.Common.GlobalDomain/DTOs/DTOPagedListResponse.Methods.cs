@@ -4,8 +4,6 @@ using LeadSoft.Common.Library.Extensions;
 
 using Microsoft.AspNetCore.Mvc;
 
-using System.Net;
-
 namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     /// <summary>
@@ -48,18 +46,16 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
             if (!typeof(TRequest).IsSubclassOf(typeof(PagedRequest)))
                 throw new ArgumentException(string.Format(ApplicationStatusMessage.ArgumentMustInheritFromDTOPagedRequest, nameof(aDtoPagedRequestInheritance)));
 
-            PagingMetadata metadata = new()
-            {
-                CurrentPage = CurrentPage,
-                PageSize = PageSize,
-                TotalPages = TotalPages,
-                TotalResults = TotalResults,
-                PreviousPageLink = HasPreviousPage ? aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetPrevious()) : null,
-                CurrentPageLink = aUrl.Link(aRouteName, aDtoPagedRequestInheritance),
-                NextPageLink = HasNextPage ? aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetNext()) : null
-            };
+            PagingMetadata metadata = new(CurrentPage, PageSize, TotalResults, TotalPages);
 
-            return metadata.ToJson();
+            if (HasPreviousPage)
+                metadata.SetPreviousPageLink(aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetPrevious()));
+
+            if (HasNextPage)
+                metadata.SetNextPageLink(aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetNext()));
+
+            return metadata.SetCurrentPageLink(aUrl.Link(aRouteName, aDtoPagedRequestInheritance))
+                           .ToJson();
         }
 
         /// <summary>
@@ -75,28 +71,16 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
             if (!typeof(TRequest).IsSubclassOf(typeof(PagedRequest)))
                 throw new ArgumentException(string.Format(ApplicationStatusMessage.ArgumentMustInheritFromDTOPagedRequest, nameof(aDtoPagedRequestInheritance)));
 
-            PagingMetadata metadata = new()
-            {
-                CurrentPage = CurrentPage,
-                PageSize = PageSize,
-                TotalPages = TotalPages,
-                TotalResults = TotalResults,
-                PreviousPageLink = HasPreviousPage ? SanitizeUrl(aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetPrevious())) : null,
-                CurrentPageLink = SanitizeUrl(aUrl.Link(aRouteName, aDtoPagedRequestInheritance)),
-                NextPageLink = HasNextPage ? SanitizeUrl(aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetNext())) : null
-            };
+            PagingMetadata metadata = new(CurrentPage, PageSize, TotalResults, TotalPages);
 
-            return metadata.ToJson();
+            if (HasPreviousPage)
+                metadata.SetPreviousPageLink(aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetPrevious()));
+
+            if (HasNextPage)
+                metadata.SetNextPageLink(aUrl.Link(aRouteName, aDtoPagedRequestInheritance.GetNext()));
+
+            return metadata.SetCurrentPageLink(aUrl.Link(aRouteName, aDtoPagedRequestInheritance))
+                           .ToJson();
         }
-
-        private string SanitizeUrl(string url)
-            => WebUtility.HtmlEncode(url);
-
-
-        /// <summary>
-        /// Check if list is empty
-        /// </summary>
-        /// <returns>True or false</returns>
-        public bool IsEmpty() => Count <= 0;
     }
 }
