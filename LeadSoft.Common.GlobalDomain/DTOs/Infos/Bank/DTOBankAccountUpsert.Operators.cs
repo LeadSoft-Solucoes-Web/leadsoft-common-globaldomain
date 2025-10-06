@@ -12,7 +12,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank
         /// Explicit Operator
         /// </summary>
         /// <param name="aAccount"></param>
-        public static explicit operator BankAccount(DTOBankAccountUpsert aAccount)
+        public static implicit operator BankAccount(DTOBankAccountUpsert aAccount)
         {
             return new BankAccount()
             {

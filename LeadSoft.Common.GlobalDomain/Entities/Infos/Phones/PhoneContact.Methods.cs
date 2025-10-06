@@ -1,6 +1,5 @@
 ﻿using LeadSoft.Common.Library;
 using LeadSoft.Common.Library.Extensions;
-using System.Text.RegularExpressions;
 using static LeadSoft.Common.GlobalDomain.Entities.Enums;
 
 namespace LeadSoft.Common.GlobalDomain.Entities
@@ -97,23 +96,6 @@ namespace LeadSoft.Common.GlobalDomain.Entities
                 return Convert.ToDouble(clearedNumber).ToString("(##) ####-####");
             else
                 return Convert.ToDouble(clearedNumber).ToString("(##) #####-####");
-        }
-
-        /// <summary>
-        /// Validate Phone Contact. Pattern: (xx) xxxxx-xxxx
-        /// </summary>
-        public static bool IsValidPhone(string phone)
-        {
-            Regex regex = new(@"^\(?[1-9]{2}\)? ?(?:[2-9]|9[1-9])[0-9]{3}\-?[0-9]{4}$");//(@"^\([1-9]{2}\) (?:[2-9]|9[1-9])[0-9]{3}\-[0-9]{4}$");
-
-            try
-            {
-                return regex.IsMatch(phone.Trim());
-            }
-            catch
-            {
-                return false;
-            }
         }
     }
 }

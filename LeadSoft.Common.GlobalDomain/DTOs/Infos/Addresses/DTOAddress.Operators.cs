@@ -5,7 +5,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTOAddress
     {
-        public static explicit operator DTOAddress(Address aAddress)
+        public static implicit operator DTOAddress(Address aAddress)
         {
             if (aAddress.IsNull())
                 return null;
@@ -28,7 +28,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
             };
         }
 
-        public static explicit operator Address(DTOAddress aDto)
+        public static implicit operator Address(DTOAddress aDto)
         {
             if (aDto.IsNull())
                 return null;

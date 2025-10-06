@@ -5,7 +5,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank
 {
     public partial class DTOBankAccount
     {
-        public static explicit operator DTOBankAccount(BankAccount aBankAccount)
+        public static implicit operator DTOBankAccount(BankAccount aBankAccount)
         {
             if (aBankAccount.IsNull())
                 return new DTOBankAccount();
@@ -23,7 +23,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank
             };
         }
 
-        public static explicit operator BankAccount(DTOBankAccount aDto)
+        public static implicit operator BankAccount(DTOBankAccount aDto)
         {
             if (aDto.IsNull())
                 return new BankAccount();

@@ -10,7 +10,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 
         }
 
-        public static explicit operator DTOAddressResponse(Address aAddress)
+        public static implicit operator DTOAddressResponse(Address aAddress)
         {
             if (aAddress.IsNull())
                 return null;

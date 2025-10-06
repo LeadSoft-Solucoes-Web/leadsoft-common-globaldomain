@@ -9,7 +9,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs.Pricing
         /// 
         /// </summary>
         /// <param name="aPrice"></param>
-        public static explicit operator DTOPriceRead(Price aPrice)
+        public static implicit operator DTOPriceRead(Price aPrice)
         {
             if (aPrice.IsNull())
                 return null;

@@ -13,7 +13,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// 
         /// </summary>
         /// <param name="aImageData"></param>
-        public static explicit operator DTOPeriodResponse(Period aPeriod)
+        public static implicit operator DTOPeriodResponse(Period aPeriod)
         {
             if (aPeriod.IsNull())
                 return null;

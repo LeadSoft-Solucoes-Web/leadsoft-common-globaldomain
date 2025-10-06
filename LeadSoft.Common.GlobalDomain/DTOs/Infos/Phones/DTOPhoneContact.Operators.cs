@@ -5,12 +5,12 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTOPhoneContact
     {
-        public static explicit operator DTOPhoneContact(PhoneContact aPhone)
+        public static implicit operator DTOPhoneContact(PhoneContact aPhone)
         {
             if (aPhone.IsNull())
                 return null;
 
-            return new DTOPhoneContact()
+            return new()
             {
                 DDI = aPhone.DDI,
                 DDD = aPhone.DDD,
@@ -19,7 +19,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
             };
         }
 
-        public static explicit operator PhoneContact(DTOPhoneContact aDto)
+        public static implicit operator PhoneContact(DTOPhoneContact aDto)
         {
             if (aDto.IsNull())
                 return null;

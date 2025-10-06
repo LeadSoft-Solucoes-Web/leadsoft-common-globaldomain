@@ -5,7 +5,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTOPhoneContactUpsert
     {
-        public static explicit operator PhoneContact(DTOPhoneContactUpsert aDto)
+        public static implicit operator PhoneContact(DTOPhoneContactUpsert aDto)
         {
             if (aDto.IsNull())
                 return null;

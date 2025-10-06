@@ -9,7 +9,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// 
         /// </summary>
         /// <param name="aImageData"></param>
-        public static explicit operator DTOImageDataRead(ImageData aImageData)
+        public static implicit operator DTOImageDataRead(ImageData aImageData)
         {
             if (aImageData.IsNull())
                 return null;

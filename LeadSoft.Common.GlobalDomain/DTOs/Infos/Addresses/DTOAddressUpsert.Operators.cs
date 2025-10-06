@@ -5,7 +5,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTOAddressUpsert
     {
-        public static explicit operator Address(DTOAddressUpsert aDto)
+        public static implicit operator Address(DTOAddressUpsert aDto)
         {
             if (aDto.IsNull())
                 return null;

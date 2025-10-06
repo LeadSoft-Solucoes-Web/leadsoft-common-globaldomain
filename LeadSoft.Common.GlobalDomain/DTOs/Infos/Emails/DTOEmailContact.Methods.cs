@@ -1,6 +1,5 @@
 ﻿using LeadSoft.Common.GlobalDomain.Entities;
 using LeadSoft.Common.Library;
-using System;
 using static LeadSoft.Common.GlobalDomain.Entities.Enums;
 
 namespace LeadSoft.Common.GlobalDomain.DTOs
@@ -16,7 +15,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 
         public DTOEmailContact(string aAddress)
         {
-            if (!EmailContact.IsValidEmail(aAddress))
+            if (!aAddress.IsValidEmail())
                 throw new OperationCanceledException(ApplicationStatusMessage.InvalidEmail);
 
             Address = aAddress;
@@ -28,13 +27,13 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// DTO to Email contact class
         /// </summary>
         /// <returns>Email contact class</returns>
-        public EmailContact ToEmailContact() => (EmailContact)this;
+        public EmailContact ToEmailContact() => this;
 
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="aEmailContact"></param>
-      /// <returns></returns>
-        public static DTOEmailContact ToDTO(EmailContact aEmailContact) => (DTOEmailContact)aEmailContact;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aEmailContact"></param>
+        /// <returns></returns>
+        public static DTOEmailContact ToDTO(EmailContact aEmailContact) => aEmailContact;
     }
 }

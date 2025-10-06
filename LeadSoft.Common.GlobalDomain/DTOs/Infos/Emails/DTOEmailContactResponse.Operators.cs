@@ -5,12 +5,12 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTOEmailContactResponse
     {
-        public static explicit operator DTOEmailContactResponse(EmailContact aEmailContact)
+        public static implicit operator DTOEmailContactResponse(EmailContact aEmailContact)
         {
             if (aEmailContact.IsNull())
                 return null;
 
-            return new DTOEmailContactResponse()
+            return new()
             {
                 Type = aEmailContact.Type,
                 CanNotify = aEmailContact.CanNotify,

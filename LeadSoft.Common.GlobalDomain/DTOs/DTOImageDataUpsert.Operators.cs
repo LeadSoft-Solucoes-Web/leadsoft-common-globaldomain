@@ -12,7 +12,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// Image Data class to DTO Image Data
         /// </summary>
         /// <param name="aDto">DTOImageDataUpsert</param>
-        public static explicit operator ImageData(DTOImageDataUpsert aDto)
+        public static implicit operator ImageData(DTOImageDataUpsert aDto)
         {
             if (aDto.IsNull())
                 return null;

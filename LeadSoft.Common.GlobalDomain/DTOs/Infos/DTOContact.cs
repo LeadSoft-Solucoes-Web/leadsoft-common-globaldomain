@@ -27,7 +27,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// </summary>
         /// <example>true</example>
         [DataMember]
-        public bool CanNotify { get; set; }
+        public bool CanNotify { get; set; } = false;
 
         /// <summary>
         /// Indicates if this Email should become primary

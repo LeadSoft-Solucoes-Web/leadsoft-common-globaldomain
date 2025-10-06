@@ -5,7 +5,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTODocument
     {
-        public static explicit operator DTODocument(Document aDocument)
+        public static implicit operator DTODocument(Document aDocument)
         {
             if (aDocument.IsNull())
                 return new DTODocument();
@@ -19,7 +19,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
             };
         }
 
-        public static explicit operator Document(DTODocument aDto)
+        public static implicit operator Document(DTODocument aDto)
         {
             if (aDto.IsNull())
                 return null;

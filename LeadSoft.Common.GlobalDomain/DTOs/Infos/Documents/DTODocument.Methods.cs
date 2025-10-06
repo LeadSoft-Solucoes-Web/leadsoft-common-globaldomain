@@ -4,13 +4,13 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTODocument
     {
-        public Document ToDocument() => (Document)this;
-        
+        public Document ToDocument() => this;
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="aDocument"></param>
         /// <returns></returns>
-        public static DTODocument ToDTO(Document aDocument) => (DTODocument)aDocument;
+        public static DTODocument ToDTO(Document aDocument) => aDocument;
     }
 }

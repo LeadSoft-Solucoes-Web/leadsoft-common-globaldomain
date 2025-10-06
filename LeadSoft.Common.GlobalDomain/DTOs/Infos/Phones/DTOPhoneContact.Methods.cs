@@ -1,6 +1,5 @@
 ﻿using LeadSoft.Common.GlobalDomain.Entities;
 using LeadSoft.Common.Library;
-using System;
 using static LeadSoft.Common.GlobalDomain.Entities.Enums;
 
 namespace LeadSoft.Common.GlobalDomain.DTOs
@@ -16,7 +15,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 
         public DTOPhoneContact(string aPhoneNumber)
         {
-            if (!PhoneContact.IsValidPhone(aPhoneNumber))
+            if (!aPhoneNumber.IsValidPhone())
                 throw new OperationCanceledException(ApplicationStatusMessage.InvalidPhoneNumber);
 
             DDD = aPhoneNumber.Substring(0, 2);
@@ -29,6 +28,6 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// DTO to Phone contact class
         /// </summary>
         /// <returns>Phone Contact class</returns>
-        public PhoneContact ToPhoneContact() => (PhoneContact)this;
+        public PhoneContact ToPhoneContact() => this;
     }
 }

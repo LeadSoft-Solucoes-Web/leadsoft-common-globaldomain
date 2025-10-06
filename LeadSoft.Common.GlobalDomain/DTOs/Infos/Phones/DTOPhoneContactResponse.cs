@@ -16,18 +16,18 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// Discagem Direta Internacional
         /// </summary>
         [DataMember]
-        public string DDI { get; set; }
+        public string DDI { get; set; } = string.Empty;
 
         /// <summary>
         /// Discagem Direta à Distância
         /// </summary>
         [DataMember]
-        public string DDD { get; set; }
+        public string DDD { get; set; } = string.Empty;
 
         /// <summary>
         /// Phone number
         /// </summary>
         [DataMember]
-        public string Number { get; set; }
+        public string Number { get; set; } = string.Empty;
     }
 }

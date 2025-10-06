@@ -12,7 +12,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// Image Data class to DTO Image Data
         /// </summary>
         /// <param name="aImageData">ImageData</param>
-        public static explicit operator DTOImageData(ImageData aImageData)
+        public static implicit operator DTOImageData(ImageData aImageData)
         {
             if (aImageData.IsNull())
                 return null;
@@ -32,7 +32,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// Image Data DTO to Image Data class
         /// </summary>
         /// <param name="aDto">DTOImageData</param>
-        public static explicit operator ImageData(DTOImageData aDto)
+        public static implicit operator ImageData(DTOImageData aDto)
         {
             if (aDto.IsNull())
                 return new();

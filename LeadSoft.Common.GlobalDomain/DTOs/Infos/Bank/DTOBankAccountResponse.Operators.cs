@@ -11,7 +11,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank
         /// Operator from Bank Account to DTOBankAccount
         /// </summary>
         /// <param name="aBankAccount">Bank Account</param>
-        public static explicit operator DTOBankAccountResponse(BankAccount aBankAccount)
+        public static implicit operator DTOBankAccountResponse(BankAccount aBankAccount)
         {
             return new DTOBankAccountResponse()
             {

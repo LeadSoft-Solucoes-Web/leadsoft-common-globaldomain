@@ -16,7 +16,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// </summary>
         /// <example>55</example>
         [DataMember]
-        public string DDI { get; set; }
+        public string DDI { get; set; } = string.Empty;
 
         /// <summary>
         /// Discagem Direta à Distância
@@ -24,7 +24,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// <example>31</example>
         [DataMember]
         [Required(ErrorMessage = "DDD is required")]
-        public string DDD { get; set; }
+        public string DDD { get; set; } = string.Empty;
 
         /// <summary>
         /// Phone number
@@ -32,6 +32,6 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// <example>997759557</example>
         [DataMember]
         [Required(ErrorMessage = "Number is required")]
-        public string Number { get; set; }
+        public string Number { get; set; } = string.Empty;
     }
 }

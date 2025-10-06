@@ -14,6 +14,6 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         [DataMember]
         [Required(ErrorMessage = "Address is required.")]
         [EmailAddress]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
     }
 }

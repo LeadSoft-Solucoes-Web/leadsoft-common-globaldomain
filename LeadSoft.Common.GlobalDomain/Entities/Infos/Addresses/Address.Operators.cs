@@ -11,7 +11,7 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// Autofill Address with found Cep on Via CEP API
         /// </summary>
         /// <param name="aDto">DTOFoundAddress</param>
-        public static explicit operator Address(DTOFoundAddress aDto)
+        public static implicit operator Address(DTOFoundAddress aDto)
         {
             if (aDto.IsNull())
                 return null;

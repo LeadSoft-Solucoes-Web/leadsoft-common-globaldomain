@@ -11,7 +11,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// Image Data class to DTO Image Data
         /// </summary>
         /// <param name="aDto">DTOImageDataUpsert</param>
-        public static explicit operator LeadSoft.Common.GlobalDomain.Entities.Integration(DTOIntegration aDto)
+        public static implicit operator LeadSoft.Common.GlobalDomain.Entities.Integration(DTOIntegration aDto)
         {
             if (aDto.IsNull())
                 return null;

@@ -9,7 +9,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs.Pricing
         /// 
         /// </summary>
         /// <param name="aDto"></param>
-        public static explicit operator Price(DTOPriceInsert aDto)
+        public static implicit operator Price(DTOPriceInsert aDto)
         {
             if (aDto.IsNull())
                 return null;

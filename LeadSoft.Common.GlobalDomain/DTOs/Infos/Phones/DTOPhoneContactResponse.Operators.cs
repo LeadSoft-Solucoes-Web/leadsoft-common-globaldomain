@@ -7,12 +7,12 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
     {
 
 
-        public static explicit operator DTOPhoneContactResponse(PhoneContact aPhone)
+        public static implicit operator DTOPhoneContactResponse(PhoneContact aPhone)
         {
             if (aPhone.IsNull())
                 return null;
 
-            return new DTOPhoneContactResponse()
+            return new()
             {
                 DDI = aPhone.DDI,
                 DDD = aPhone.DDD,

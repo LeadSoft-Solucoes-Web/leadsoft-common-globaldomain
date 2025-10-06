@@ -10,12 +10,12 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 
         }
 
-        public static explicit operator DTODocumentResponse(Document aDocument)
+        public static implicit operator DTODocumentResponse(Document aDocument)
         {
             if (aDocument.IsNull())
-                return new DTODocumentResponse();
+                return new();
 
-            return new DTODocumentResponse()
+            return new()
             {
                 Type = aDocument.Type,
                 Number = aDocument.Number,

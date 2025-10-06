@@ -19,6 +19,6 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// </summary>
         [DataMember]
         [EmailAddress]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
     }
 }

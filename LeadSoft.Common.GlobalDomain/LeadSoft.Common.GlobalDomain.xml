@@ -351,13 +351,13 @@
             </summary>
             <example>Cover_w143kxnu_thumbnail.jpg</example>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageData">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageData">
             <summary>
             Image Data class to DTO Image Data
             </summary>
             <param name="aImageData">ImageData</param>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOImageData)~LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageData.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.DTOImageData)~LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData">
             <summary>
             Image Data DTO to Image Data class
             </summary>
@@ -427,7 +427,7 @@
             <param name="aImageData"></param>
             <returns></returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataRead">
             <summary>
             
             </summary>
@@ -492,7 +492,7 @@
             <param name="aImageData"></param>
             <returns></returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData)~LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataReadResponse">
             <summary>
             
             </summary>
@@ -547,7 +547,7 @@
             </summary>
             <example>Create</example>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert)~LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.DTOImageDataUpsert)~LeadSoft.Common.GlobalDomain.Entities.CloudFiles.ImageData">
             <summary>
             Image Data class to DTO Image Data
             </summary>
@@ -590,7 +590,7 @@
             </summary>
             <returns>Integration</returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration)~LeadSoft.Common.GlobalDomain.Entities.Integration">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.DTOIntegration)~LeadSoft.Common.GlobalDomain.Entities.Integration">
             <summary>
             Image Data class to DTO Image Data
             </summary>
@@ -814,7 +814,7 @@
             If date time now utc is in period
             </summary>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Period)~LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.Period)~LeadSoft.Common.GlobalDomain.DTOs.DTOPeriod">
             <summary>
             
             </summary>
@@ -866,7 +866,7 @@
             If date time now utc is in period
             </summary>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Period)~LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.Period)~LeadSoft.Common.GlobalDomain.DTOs.DTOPeriodResponse">
             <summary>
             
             </summary>
@@ -1318,7 +1318,7 @@
             Constructor Basic
             </summary>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.BankAccount)~LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.BankAccount)~LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountResponse">
             <summary>
             Operator from Bank Account to DTOBankAccount
             </summary>
@@ -1372,7 +1372,7 @@
             Pix Key
             </summary>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert)~LeadSoft.Common.GlobalDomain.Entities.BankAccount">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.Infos.Bank.DTOBankAccountUpsert)~LeadSoft.Common.GlobalDomain.Entities.BankAccount">
             <summary>
             Explicit Operator
             </summary>
@@ -1648,13 +1648,13 @@
             <param name="aEmailContact"></param>
             <returns></returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.EmailContact)~LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.EmailContact)~LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact">
             <summary>
             Email contact to DTO Email contact
             </summary>
             <param name="aEmailContact">Email contact class</param>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact)~LeadSoft.Common.GlobalDomain.Entities.EmailContact">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.DTOEmailContact)~LeadSoft.Common.GlobalDomain.Entities.EmailContact">
             <summary>
             DTO Email contact to email contact class
             </summary>
@@ -1776,13 +1776,13 @@
             <param name="aPrice">Price object</param>
             <returns>Price Converted to DTO</returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice">
             <summary>
             
             </summary>
             <param name="aPrice"></param>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice)~LeadSoft.Common.GlobalDomain.Entities.Pricing.Price">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPrice)~LeadSoft.Common.GlobalDomain.Entities.Pricing.Price">
             <summary>
             
             </summary>
@@ -1817,7 +1817,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert.op_Explicit(LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert)~LeadSoft.Common.GlobalDomain.Entities.Pricing.Price">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceInsert)~LeadSoft.Common.GlobalDomain.Entities.Pricing.Price">
             <summary>
             
             </summary>
@@ -1848,7 +1848,7 @@
             Price display value
             </summary>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceRead">
             <summary>
             
             </summary>
@@ -1892,7 +1892,7 @@
             <param name="aPrice">Price object</param>
             <returns>Price Converted to DTO</returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.op_Explicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse">
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.Pricing.Price)~LeadSoft.Common.GlobalDomain.DTOs.Pricing.DTOPriceResponse">
             <summary>
             
             </summary>
@@ -2775,7 +2775,7 @@
             This asyncronous method auto fill address information searching for CEP on Via CEP API
             </summary>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Address.op_Explicit(LeadSoft.Adapter.ViaCep.DTOs.DTOFoundAddress)~LeadSoft.Common.GlobalDomain.Entities.Address">
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Address.op_Implicit(LeadSoft.Adapter.ViaCep.DTOs.DTOFoundAddress)~LeadSoft.Common.GlobalDomain.Entities.Address">
             <summary>
             This operator points to Common.Library.ViaCEPService.DTOs
             Autofill Address with found Cep on Via CEP API
@@ -3237,12 +3237,30 @@
             </summary>
             <param name="aContactType">Contact type enum</param>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.Entities.EmailContact.IsValidEmail(System.String)">
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.EmailExtensions.IsValidEmail(System.String)">
             <summary>
             Checks if string is an e-mail
             </summary>
             <param name="aEmail">E-mail Address</param>
             <returns>Boolean</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.EmailExtensions.SplitEmail(System.String)">
+            <summary>
+            Method available to transform a semicolon separated e-mail from single string to a string array
+            </summary>
+            <param name="aString">Self String</param>
+            <returns>String array</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.EmailExtensions.OvershadowEmail(System.String)">
+            <summary>
+            Mascara um e-mail para exibição (ex.: "eu@lucasrtavares.com.br" -> "e******@***tavares.com.br").
+            Regras aplicadas:
+             - mantém entre 1 e 3 caracteres iniciais do local-part (mínimo 1, máximo 3);
+             - substitui o restante do local-part por '*' garantindo pelo menos 6 '*' visíveis;
+             - no domínio: substitui o começo do primeiro label por '***' e revela os últimos N caracteres desse primeiro label
+               (N = min(7, comprimento do label)). Mantém os demais labels (ex.: ".com.br").
+             - se a string não for um e-mail, retorna a própria string (opção conservadora).
+            </summary>
         </member>
         <member name="T:LeadSoft.Common.GlobalDomain.Entities.Emails">
             <summary>
@@ -3405,7 +3423,7 @@
             <param name="aPhone"></param>
             <returns></returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneContact.IsValidPhone(System.String)">
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.PhoneExtensions.IsValidPhone(System.String)">
             <summary>
             Validate Phone Contact. Pattern: (xx) xxxxx-xxxx
             </summary>

@@ -5,12 +5,12 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
 {
     public partial class DTODocumentInsert
     {
-        public static explicit operator Document(DTODocumentInsert aDto)
+        public static implicit operator Document(DTODocumentInsert aDto)
         {
             if (aDto.IsNull())
                 return null;
 
-            Document document = new Document(aDto.Type, aDto.Number)
+            Document document = new(aDto.Type, aDto.Number)
             {
                 Issue = aDto.Issue
             };
