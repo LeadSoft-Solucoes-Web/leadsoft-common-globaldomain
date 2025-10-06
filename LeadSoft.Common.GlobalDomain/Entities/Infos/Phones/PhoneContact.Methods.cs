@@ -10,6 +10,10 @@ namespace LeadSoft.Common.GlobalDomain.Entities
     /// </summary>
     public partial class PhoneContact
     {
+        public PhoneContact() : base()
+        {
+        }
+
         /// <summary>
         /// Base Constructor requires a Contact type
         /// </summary>

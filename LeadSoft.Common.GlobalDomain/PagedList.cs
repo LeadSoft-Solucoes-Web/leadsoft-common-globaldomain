@@ -26,6 +26,17 @@ namespace LeadSoft.Common.GlobalDomain
                 AddRange(aPagedList);
         }
 
+        public PagedList(IEnumerable<T> aList, PagedRequest pagedRequest, long aTotalResults)
+        {
+            PageSize = pagedRequest.PageSize;
+            CurrentPage = pagedRequest.CurrentPage;
+            TotalResults = aTotalResults;
+            TotalPages = (int)Math.Ceiling(TotalResults / (double)pagedRequest.PageSize);
+
+            if (!aList.IsNull())
+                AddRange(aList);
+        }
+
         public PagedList(IEnumerable<T> aList, int aPageSize, int aCurrentPage, long aTotalResults)
         {
             PageSize = aPageSize;

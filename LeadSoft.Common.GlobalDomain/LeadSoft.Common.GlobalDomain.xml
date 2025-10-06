@@ -3479,12 +3479,13 @@
             <param name="aPhoneNumber">Phone Number</param>
             <returns>Self for Chain Call</returns>
         </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.Add(LeadSoft.Common.GlobalDomain.Entities.PhoneContact)">
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.Add(LeadSoft.Common.GlobalDomain.Entities.PhoneContact,System.Boolean)">
             <summary>
             Includes a phone in list
             Phones cannot have duplicated number
             </summary>
             <param name="aPhone">Phone contect class to be added to list</param>
+            <param name="aHalfIfError">Flag that halts execution if error. Default: true</param>
             <returns>Self for Chain Call</returns>
         </member>
         <member name="M:LeadSoft.Common.GlobalDomain.Entities.Phones.Modify(System.String,LeadSoft.Common.GlobalDomain.Entities.PhoneContact)">

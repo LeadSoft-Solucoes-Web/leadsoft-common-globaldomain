@@ -27,6 +27,12 @@
         /// </summary>
         /// <returns>int skip value</returns>
         public int TakeSkip()
-            => (CurrentPage - 1) * PageSize;
+        {
+            int currentPage = Math.Abs(CurrentPage);
+            currentPage = currentPage <= 1 ? 0 : currentPage - 1;
+
+            return currentPage * Math.Abs(PageSize);
+        }
+
     }
 }

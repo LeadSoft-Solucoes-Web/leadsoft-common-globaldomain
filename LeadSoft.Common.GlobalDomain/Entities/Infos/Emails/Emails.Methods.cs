@@ -13,7 +13,7 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="Emails"/> class.
         /// </summary>
-        public Emails()
+        public Emails() : base()
         {
         }
 
@@ -103,6 +103,8 @@ namespace LeadSoft.Common.GlobalDomain.Entities
             if (email.IsNotNull())
                 if (aHalfIfError)
                     throw new ConflictAppException(ApplicationStatusMessage.EmailAddressAlreadyExists);
+                else
+                    return this;
 
             This.Add(aEmail);
 

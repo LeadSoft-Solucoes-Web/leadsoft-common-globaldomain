@@ -13,8 +13,7 @@ namespace LeadSoft.Common.GlobalDomain.DTOs
         /// <summary>
         /// Search Text
         /// </summary>
-
         [DataMember]
-        public virtual string SearchText { get; set; }
+        public virtual string SearchText { get; set; } = string.Empty;
     }
 }

@@ -12,7 +12,7 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="Phones"/> class.
         /// </summary>
-        public Phones()
+        public Phones() : base()
         {
         }
 
@@ -92,13 +92,17 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// Phones cannot have duplicated number
         /// </summary>
         /// <param name="aPhone">Phone contect class to be added to list</param>
+        /// <param name="aHalfIfError">Flag that halts execution if error. Default: true</param>
         /// <returns>Self for Chain Call</returns>
-        public Phones Add(PhoneContact aPhone)
+        public Phones Add(PhoneContact aPhone, bool aHalfIfError = true)
         {
             PhoneContact phone = GetPhone(aPhone.Number);
 
             if (phone.IsNotNull())
-                throw new OperationCanceledException(ApplicationStatusMessage.PhoneNumberAlreadyExists);
+                if (aHalfIfError)
+                    throw new OperationCanceledException(ApplicationStatusMessage.PhoneNumberAlreadyExists);
+                else
+                    return this;
 
             This.Add(aPhone);
 
