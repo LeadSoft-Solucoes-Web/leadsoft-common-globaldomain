@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using LeadSoft.Common.Library.Extensions;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 
 namespace LeadSoft.Common.GlobalDomain.Entities
@@ -50,37 +51,32 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// </summary>
         public static string OvershadowEmail(this string email)
         {
-            if (string.IsNullOrWhiteSpace(email))
+            if (email.IsNothing())
                 return email;
 
             email = email.Trim();
 
-            // validação simples: deve conter exatamente um '@'
-            var atIndex = email.IndexOf('@');
+            int atIndex = email.IndexOf('@');
             if (atIndex <= 0 || atIndex != email.LastIndexOf('@') || atIndex == email.Length - 1)
-                return email; // não é um e-mail válido conforme expectativa simples
+                return email;
 
-            var local = email.Substring(0, atIndex);
-            var domain = email.Substring(atIndex + 1);
+            string local = email[..atIndex];
+            string domain = email[(atIndex + 1)..];
 
-            // --- Mascara do local-part ---
-            int keepLocal = Math.Min(3, Math.Max(1, local.Length)); // manter 1..3 chars
-            int toMaskLocal = Math.Max(6, local.Length - keepLocal); // pelo menos 6 '*' visíveis
+            int keepLocal = Math.Min(3, Math.Max(1, local.Length));
+            int toMaskLocal = Math.Max(6, local.Length - keepLocal);
             string maskedLocal = local.Substring(0, keepLocal) + new string('*', toMaskLocal);
 
-            // --- Mascara do domínio ---
-            // separa labels do domínio (ex: ["lucasrtavares","com","br"])
-            var labels = domain.Split('.');
+            string[] labels = domain.Split('.');
             if (labels.Length == 0)
                 return maskedLocal + "@" + domain;
 
-            var firstLabel = labels[0];
-            int revealSuffix = Math.Min(7, firstLabel.Length); // revela até últimos 7 caracteres do primeiro label
+            string firstLabel = labels[0];
+            int revealSuffix = Math.Min(7, firstLabel.Length);
             string revealedSuffix = firstLabel.Length <= revealSuffix
                 ? firstLabel
-                : firstLabel.Substring(firstLabel.Length - revealSuffix);
+                : firstLabel[^revealSuffix..];
 
-            // prefixo de ocultação do domínio
             string maskedFirstPart = "***" + revealedSuffix;
 
             string rest = labels.Length > 1 ? "." + string.Join(".", labels.Skip(1)) : string.Empty;

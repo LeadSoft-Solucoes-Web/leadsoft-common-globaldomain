@@ -1,6 +1,6 @@
 ﻿using LeadSoft.Common.Library.Extensions;
 
-namespace LeadSoft.Common.GlobalDomain.Entities
+namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
 {
     public static class DocumentExtensions
     {
@@ -32,7 +32,7 @@ namespace LeadSoft.Common.GlobalDomain.Entities
                 soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
 
             int resto = soma % 11;
-            resto = (resto < 2) ? 0 : 11 - resto;
+            resto = resto < 2 ? 0 : 11 - resto;
 
             string digito = resto.ToString();
             tempCpf = tempCpf + digito;
@@ -42,11 +42,29 @@ namespace LeadSoft.Common.GlobalDomain.Entities
                 soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
 
             resto = soma % 11;
-            resto = (resto < 2) ? 0 : 11 - resto;
+            resto = resto < 2 ? 0 : 11 - resto;
 
             digito += resto.ToString();
 
             return aCPF.EndsWith(digito);
+        }
+
+        /// <summary>
+        /// Masks the middle digits of a CPF (Cadastro de Pessoas Físicas) number for privacy.
+        /// </summary>
+        /// <remarks>This method formats the CPF by retaining the first three and last two digits,
+        /// replacing the middle digits with asterisks.</remarks>
+        /// <param name="cpf">The CPF number as a string. Must be a valid CPF format.</param>
+        /// <returns>A string representing the CPF with the middle digits masked. Returns an empty string if the input is not a
+        /// valid CPF.</returns>
+        public static string OvershadowCpf(this string cpf)
+        {
+            if (!cpf.IsCpf())
+                return string.Empty;
+
+            cpf = cpf.OnlyNumeric().FormatCPF();
+
+            return $"{cpf[..3]}.***.***-{cpf[^2..]}";
         }
 
         /// <summary>
@@ -72,8 +90,8 @@ namespace LeadSoft.Common.GlobalDomain.Entities
             for (int i = 0; i < 12; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
 
-            int resto = (soma % 11);
-            resto = (resto < 2) ? 0 : 11 - resto;
+            int resto = soma % 11;
+            resto = resto < 2 ? 0 : 11 - resto;
 
             string digito = resto.ToString();
             tempCnpj = tempCnpj + digito;
@@ -82,17 +100,43 @@ namespace LeadSoft.Common.GlobalDomain.Entities
             for (int i = 0; i < 13; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
 
-            resto = (soma % 11);
-            resto = (resto < 2) ? 0 : 11 - resto;
+            resto = soma % 11;
+            resto = resto < 2 ? 0 : 11 - resto;
 
             digito += resto.ToString();
 
             return aCNPJ.EndsWith(digito);
         }
 
+        /// <summary>
+        /// Masks the middle digits of a CNPJ (Brazilian company identifier) for privacy.
+        /// </summary>
+        /// <remarks>This method ensures that only the first two and last two digits of the CNPJ are
+        /// visible, with the rest masked for privacy.</remarks>
+        /// <param name="cnpj">The CNPJ string to be masked. Must be a valid CNPJ format.</param>
+        /// <returns>A string with the middle digits of the CNPJ replaced by asterisks. Returns an empty string if the input is
+        /// not a valid CNPJ.</returns>
+        public static string OvershadowCnpj(this string cnpj)
+        {
+            if (!cnpj.IsCnpj())
+                return string.Empty;
+
+            cnpj = cnpj.OnlyNumeric().FormatCNPJ();
+
+            return $"{cnpj[..2]}.***.***/****-{cnpj[^2..]}";
+        }
+
+        /// <summary>
+        /// Formats a document number as either a CPF or CNPJ.
+        /// </summary>
+        /// <remarks>This method determines whether the provided document number is a CPF or CNPJ and
+        /// formats it accordingly.</remarks>
+        /// <param name="aDocumentNumber">The document number to format. Must be a valid CPF or CNPJ.</param>
+        /// <returns>A formatted string representing the CPF or CNPJ.</returns>
+        /// <exception cref="OperationCanceledException">Thrown if <paramref name="aDocumentNumber"/> is neither a valid CPF nor a valid CNPJ.</exception>
         public static string FormatCPForCNPJ(this string aDocumentNumber)
-            => IsCpf(aDocumentNumber) ? FormatCPF(aDocumentNumber)
-                      : IsCnpj(aDocumentNumber) ? FormatCNPJ(aDocumentNumber)
+            => aDocumentNumber.IsCpf() ? aDocumentNumber.FormatCPF()
+                      : aDocumentNumber.IsCnpj() ? aDocumentNumber.FormatCNPJ()
                       : throw new OperationCanceledException("Document is not CNPJ or CPF.");
 
         /// <summary>
@@ -105,6 +149,9 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// original string is returned unmodified.</returns>
         public static string FormatCPF(this string aCpf)
         {
+            if (!aCpf.IsCpf())
+                return string.Empty;
+
             string response = aCpf.Trim();
             if (response.Length == 11)
             {
@@ -123,6 +170,9 @@ namespace LeadSoft.Common.GlobalDomain.Entities
         /// string is not 14 digits long, the original string is returned unmodified.</returns>
         public static string FormatCNPJ(this string aCnpj)
         {
+            if (!aCnpj.IsCnpj())
+                return string.Empty;
+
             string response = aCnpj.Trim();
             if (response.Length == 14)
             {

@@ -1,4 +1,5 @@
-﻿using LeadSoft.Common.Library;
+﻿using LeadSoft.Common.GlobalDomain.Entities.Infos.Documents;
+using LeadSoft.Common.Library;
 using LeadSoft.Common.Library.Enumerators;
 using LeadSoft.Common.Library.Exceptions;
 using LeadSoft.Common.Library.Extensions;
