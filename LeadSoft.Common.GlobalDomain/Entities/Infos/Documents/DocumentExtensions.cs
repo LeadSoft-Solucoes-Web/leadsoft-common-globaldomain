@@ -4,6 +4,8 @@ namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
 {
     public static class DocumentExtensions
     {
+        #region [ Checks ]
+
         /// <summary>
         /// Determines whether the specified string is a valid CPF (Cadastro de Pessoas Físicas) number.
         /// </summary>
@@ -50,24 +52,6 @@ namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
         }
 
         /// <summary>
-        /// Masks the middle digits of a CPF (Cadastro de Pessoas Físicas) number for privacy.
-        /// </summary>
-        /// <remarks>This method formats the CPF by retaining the first three and last two digits,
-        /// replacing the middle digits with asterisks.</remarks>
-        /// <param name="cpf">The CPF number as a string. Must be a valid CPF format.</param>
-        /// <returns>A string representing the CPF with the middle digits masked. Returns an empty string if the input is not a
-        /// valid CPF.</returns>
-        public static string OvershadowCpf(this string cpf)
-        {
-            if (!cpf.IsCpf())
-                return string.Empty;
-
-            cpf = cpf.OnlyNumeric().FormatCPF();
-
-            return $"{cpf[..3]}.***.***-{cpf[^2..]}";
-        }
-
-        /// <summary>
         /// Determines whether the specified string is a valid CNPJ (Cadastro Nacional da Pessoa Jurídica) number.
         /// </summary>
         /// <remarks>A CNPJ is a 14-digit number used to identify Brazilian companies. This method checks the validity of
@@ -106,6 +90,72 @@ namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
             digito += resto.ToString();
 
             return aCNPJ.EndsWith(digito);
+        }
+
+        /// <summary>
+        /// Determines whether the specified string is a valid CNAE (National Classification of Economic Activities)
+        /// code.
+        /// </summary>
+        /// <remarks>A valid CNAE code consists of exactly seven numeric digits. The method checks the
+        /// following conditions: <list type="bullet"> <item><description>The first two digits (division) must be
+        /// between 01 and 99.</description></item> <item><description>The next two digits (group) must be between 00
+        /// and 99.</description></item> <item><description>The fifth digit (class) must be between 0 and
+        /// 9.</description></item> <item><description>The last two digits (subclass) must be between 00 and
+        /// 99.</description></item> </list> Additionally, the code "0000000" is considered invalid.</remarks>
+        /// <param name="cnae">The string to validate as a CNAE code. It can be null or empty.</param>
+        /// <returns><see langword="true"/> if the string represents a valid CNAE code; otherwise, <see langword="false"/>.</returns>
+        public static bool IsCnae(this string? cnae)
+        {
+            string digits = cnae.OnlyNumeric();
+
+            if (digits.IsNothing() || digits.Length != 7)
+                return false;
+
+            int div = int.Parse(digits[..2]);
+            int grp = int.Parse(digits.Substring(2, 2));
+            int cls = int.Parse(digits.Substring(4, 1));
+            int sub = int.Parse(digits.Substring(5, 2));
+
+            if (div is < 1 or > 99)
+                return false;
+
+            if (grp is < 0 or > 99)
+                return false;
+
+            if (cls is < 0 or > 9)
+                return false;
+
+            if (sub is < 0 or > 99)
+                return false;
+
+            if (digits == "0000000")
+                return false;
+
+            return true;
+        }
+
+        #endregion
+
+        #region [ Formatting ]
+
+
+
+        /// <summary>
+        /// Masks the middle digits of a CPF (Cadastro de Pessoas Físicas) number for privacy.
+        /// </summary>
+        /// <remarks>This method formats the CPF by retaining the first three and last two digits,
+        /// replacing the middle digits with asterisks.</remarks>
+        /// <param name="cpf">The CPF number as a string. Must be a valid CPF format.</param>
+        /// <returns>A string representing the CPF with the middle digits masked. Returns an empty string if the input is not a
+        /// valid CPF.</returns>
+        public static string OvershadowCpf(this string cpf)
+        {
+            if (!cpf.IsCpf())
+                return string.Empty;
+
+            cpf = cpf.OnlyNumeric().FormatCPF();
+
+            return $"{cpf[..3]}.***.***-{cpf[^2..]}";
         }
 
         /// <summary>
@@ -183,5 +233,25 @@ namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
             }
             return response;
         }
+
+        /// <summary>
+        /// Formats a given CNAE (National Classification of Economic Activities) code into a standard format.
+        /// Formata para NN.NN-N/NN. Retorna string.Empty se inválido.
+        /// </summary>
+        /// <remarks>The method assumes that the input string is a valid CNAE code consisting of exactly 7
+        /// numeric digits. If the input is not a valid CNAE code, the method returns an empty string.</remarks>
+        /// <param name="cnae">The CNAE code to format. This should be a string containing only numeric characters.</param>
+        /// <returns>A formatted string representing the CNAE code in the format "AB.CD-E/FG". Returns an empty string if the
+        /// input is not a valid CNAE code.</returns>
+        public static string FormatCnae(this string? cnae)
+        {
+            if (!cnae.IsCnae())
+                return string.Empty;
+
+            string d = cnae!.OnlyNumeric();
+            return $"{d[..2]}.{d.Substring(2, 2)}-{d.Substring(4, 1)}/{d.Substring(5, 2)}";
+        }
+
+        #endregion
     }
 }

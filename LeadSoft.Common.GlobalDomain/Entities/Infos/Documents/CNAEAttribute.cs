@@ -3,7 +3,7 @@
 namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
-    public class CNPJAttribute : ValidationAttribute
+    public class CNAEAttribute : ValidationAttribute
     {
         public override bool IsValid(object? value)
         {
@@ -12,10 +12,10 @@ namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
 
             string str = value.ToString()!;
 
-            if (str.IsCpf())
+            if (str.IsCnae())
                 return true;
 
-            ErrorMessage ??= "CPF inválido.";
+            ErrorMessage ??= "CNAE inválido.";
             return false;
         }
     }

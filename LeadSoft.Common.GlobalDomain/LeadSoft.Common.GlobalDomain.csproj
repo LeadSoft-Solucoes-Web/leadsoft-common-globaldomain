@@ -5,9 +5,9 @@
 		<Company>LeadSoft Soluções Web Ltda</Company>
 		<Authors>Lucas R. Tavares</Authors>
 		<Product>LeadSoft Global Domain</Product>
-		<AssemblyVersion>9.3.1.0</AssemblyVersion>
-		<FileVersion>9.3.1.0</FileVersion>
-		<Version>9.3.1</Version>
+		<AssemblyVersion>9.3.2.0</AssemblyVersion>
+		<FileVersion>9.3.2.0</FileVersion>
+		<Version>9.3.2</Version>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Description>LeadSoft® Global Domain reúne classes e métodos que facilitam o dia-a-dia dos desenvolvedores .net.</Description>

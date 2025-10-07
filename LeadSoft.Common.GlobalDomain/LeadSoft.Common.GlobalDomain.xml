@@ -3062,6 +3062,29 @@
             <param name="aCPF">The string representing the CPF number to validate. It should contain only numeric characters.</param>
             <returns><see langword="true"/> if the specified string is a valid CPF number; otherwise, <see langword="false"/>.</returns>
         </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Documents.DocumentExtensions.IsCnpj(System.String)">
+            <summary>
+            Determines whether the specified string is a valid CNPJ (Cadastro Nacional da Pessoa Jurídica) number.
+            </summary>
+            <remarks>A CNPJ is a 14-digit number used to identify Brazilian companies. This method checks the validity of
+            the CNPJ by verifying its check digits according to the official algorithm.</remarks>
+            <param name="aCNPJ">The string to validate as a CNPJ number. It must contain only numeric characters.</param>
+            <returns><see langword="true"/> if the specified string is a valid CNPJ number; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Documents.DocumentExtensions.IsCnae(System.String)">
+            <summary>
+            Determines whether the specified string is a valid CNAE (National Classification of Economic Activities)
+            code.
+            </summary>
+            <remarks>A valid CNAE code consists of exactly seven numeric digits. The method checks the
+            following conditions: <list type="bullet"> <item><description>The first two digits (division) must be
+            between 01 and 99.</description></item> <item><description>The next two digits (group) must be between 00
+            and 99.</description></item> <item><description>The fifth digit (class) must be between 0 and
+            9.</description></item> <item><description>The last two digits (subclass) must be between 00 and
+            99.</description></item> </list> Additionally, the code "0000000" is considered invalid.</remarks>
+            <param name="cnae">The string to validate as a CNAE code. It can be null or empty.</param>
+            <returns><see langword="true"/> if the string represents a valid CNAE code; otherwise, <see langword="false"/>.</returns>
+        </member>
         <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Documents.DocumentExtensions.OvershadowCpf(System.String)">
             <summary>
             Masks the middle digits of a CPF (Cadastro de Pessoas Físicas) number for privacy.
@@ -3071,15 +3094,6 @@
             <param name="cpf">The CPF number as a string. Must be a valid CPF format.</param>
             <returns>A string representing the CPF with the middle digits masked. Returns an empty string if the input is not a
             valid CPF.</returns>
-        </member>
-        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Documents.DocumentExtensions.IsCnpj(System.String)">
-            <summary>
-            Determines whether the specified string is a valid CNPJ (Cadastro Nacional da Pessoa Jurídica) number.
-            </summary>
-            <remarks>A CNPJ is a 14-digit number used to identify Brazilian companies. This method checks the validity of
-            the CNPJ by verifying its check digits according to the official algorithm.</remarks>
-            <param name="aCNPJ">The string to validate as a CNPJ number. It must contain only numeric characters.</param>
-            <returns><see langword="true"/> if the specified string is a valid CNPJ number; otherwise, <see langword="false"/>.</returns>
         </member>
         <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Documents.DocumentExtensions.OvershadowCnpj(System.String)">
             <summary>
@@ -3118,6 +3132,17 @@
             <param name="aCnpj">The CNPJ string to format. Must be exactly 14 digits long.</param>
             <returns>A formatted CNPJ string with periods, a slash, and a hyphen added in the standard positions. If the input
             string is not 14 digits long, the original string is returned unmodified.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.Infos.Documents.DocumentExtensions.FormatCnae(System.String)">
+            <summary>
+            Formats a given CNAE (National Classification of Economic Activities) code into a standard format.
+            Formata para NN.NN-N/NN. Retorna string.Empty se inválido.
+            </summary>
+            <remarks>The method assumes that the input string is a valid CNAE code consisting of exactly 7
+            numeric digits. If the input is not a valid CNAE code, the method returns an empty string.</remarks>
+            <param name="cnae">The CNAE code to format. This should be a string containing only numeric characters.</param>
+            <returns>A formatted string representing the CNAE code in the format "AB.CD-E/FG". Returns an empty string if the
+            input is not a valid CNAE code.</returns>
         </member>
         <member name="T:LeadSoft.Common.GlobalDomain.Entities.Contact">
             <summary>

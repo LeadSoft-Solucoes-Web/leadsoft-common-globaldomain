@@ -2,7 +2,7 @@
 
 namespace LeadSoft.Common.GlobalDomain.Entities.Infos.Documents
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
     public class CPFAttribute : ValidationAttribute
     {
         public override bool IsValid(object? value)
