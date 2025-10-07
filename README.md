@@ -5,22 +5,20 @@ This package contains useful entities and classes for LeadSoft® or external app
 For any development and tool use question, contact developers@leadsoft.inf.br .
 
 #### [Nuget.Org: LeadSoft.Common.GlobalDomain](https://www.nuget.org/packages/LeadSoft.Common.GlobalDomain)
-#### [GitHub Repo: leadsoft-common-globaldomain](https://github.com/LeadSoft-Solucoes-Web/leadsoft-common-globaldomain)
+#### [GitHub Repo: leadsoft-global-domain](https://github.com/LeadSoft-Solucoes-Web/leadsoft-global-domain)
  
 ##  Features  
--- PagedList
--- PagedRequest
--- PagingMetadata
-
 - Controllers
-	- Constant
+  - LeadSoftErrorController
+  - LeadSoftRootController
 - DTOs
-	- *Huge amount of files*
 - Entities
-	- *Huge amount of files*
 - Helpers
-	- PagedRequestExtensions
- 
+  - PagedRequestExtensions
+- PagedList.cs
+- PagedRequest.cs
+- PagingMetadata.cs
+  
  ##  Tech  
 Framework requirements to run:
  
