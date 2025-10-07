@@ -645,6 +645,72 @@
             <param name="aKey">Key</param>
             <param name="aValue">Value</param>
         </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong">
+            <summary>
+            Represents a data transfer object for geographical coordinates, specifically latitude and longitude.
+            </summary>
+            <remarks>This class is used to encapsulate latitude and longitude values, providing a simple way to
+            pass geographical coordinates between different layers of an application. It is marked as serializable and can
+            be used in data contracts for services.</remarks>
+            <param name="lat"></param>
+            <param name="lng"></param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.#ctor(System.Double,System.Double)">
+            <summary>
+            Represents a data transfer object for geographical coordinates, specifically latitude and longitude.
+            </summary>
+            <remarks>This class is used to encapsulate latitude and longitude values, providing a simple way to
+            pass geographical coordinates between different layers of an application. It is marked as serializable and can
+            be used in data contracts for services.</remarks>
+            <param name="lat"></param>
+            <param name="lng"></param>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.Latidute">
+            <summary>
+            Gets or sets the latitude coordinate.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.Longidute">
+            <summary>
+            Gets or sets the longitude coordinate.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.ToStr">
+            <summary>
+            Returns a string representation of the coordinates.
+            </summary>
+            <returns>A string in the format "Latitude,Longitude" representing the coordinates.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.FromString(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong"/> from a string representation of latitude and longitude.
+            </summary>
+            <remarks>The method expects the input string to be in the format "latitude,longitude" with
+            optional whitespace. It uses the invariant culture for parsing the numeric values.</remarks>
+            <param name="latlong">A string containing the latitude and longitude values separated by a comma.  The latitude must be between
+            -90 and 90, and the longitude must be between -180 and 180.</param>
+            <returns>A <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong"/> object initialized with the parsed latitude and longitude values. Returns a
+            default <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong"/> if the input string is null, empty, or cannot be parsed into valid latitude
+            and longitude values.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.op_Implicit(System.String)~LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong">
+            <summary>
+            Converts a string representation of latitude and longitude into a <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong"/> object.
+            </summary>
+            <param name="latlong">A string containing the latitude and longitude, typically in a comma-separated format.</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.op_Implicit(LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong)~LeadSoft.Common.GlobalDomain.Entities.LatLong">
+            <summary>
+            Converts a <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong"/> instance to a <see cref="T:LeadSoft.Common.GlobalDomain.Entities.LatLong"/> instance.
+            </summary>
+            <param name="dto">The <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong"/> object to convert. Must not be null.</param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong.op_Implicit(LeadSoft.Common.GlobalDomain.Entities.LatLong)~LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong">
+            <summary>
+            Converts a <see cref="T:LeadSoft.Common.GlobalDomain.Entities.LatLong"/> instance to a <see cref="T:LeadSoft.Common.GlobalDomain.DTOs.DTOLatLong"/> instance.
+            </summary>
+            <param name="latlong">The <see cref="T:LeadSoft.Common.GlobalDomain.Entities.LatLong"/> instance to convert. Must not be null.</param>
+        </member>
         <member name="P:LeadSoft.Common.GlobalDomain.DTOs.DTOList`1.RecordCount">
             <summary>
             Items Count
@@ -2511,6 +2577,54 @@
             <param name="maxWidth"></param>
             <param name="maxHeight"></param>
             <returns></returns>
+        </member>
+        <member name="T:LeadSoft.Common.GlobalDomain.Entities.LatLong">
+            <summary>
+            Represents a geographical location using latitude and longitude coordinates.
+            </summary>
+            <remarks>The <see cref="T:LeadSoft.Common.GlobalDomain.Entities.LatLong"/> class provides properties to store and manipulate geographical
+            coordinates. Latitude values must be between -90 and 90 degrees, and longitude values must be between -180 and
+            180 degrees.</remarks>
+            <param name="lat"></param>
+            <param name="lng"></param>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.LatLong.ToStr">
+            <summary>
+            Returns a string representation of the coordinates.
+            </summary>
+            <returns>A string in the format "Latitude,Longitude" representing the coordinates.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.LatLong.FromString(System.String)">
+            <summary>
+            Creates a new instance of <see cref="!:DTOLatLong"/> from a string representation of latitude and longitude.
+            </summary>
+            <remarks>The method expects the input string to be in the format "latitude,longitude" with
+            optional whitespace. It uses the invariant culture for parsing the numeric values.</remarks>
+            <param name="latlong">A string containing the latitude and longitude values separated by a comma.  The latitude must be between
+            -90 and 90, and the longitude must be between -180 and 180.</param>
+            <returns>A <see cref="!:DTOLatLong"/> object initialized with the parsed latitude and longitude values. Returns a
+            default <see cref="!:DTOLatLong"/> if the input string is null, empty, or cannot be parsed into valid latitude
+            and longitude values.</returns>
+        </member>
+        <member name="M:LeadSoft.Common.GlobalDomain.Entities.LatLong.#ctor(System.Double,System.Double)">
+            <summary>
+            Represents a geographical location using latitude and longitude coordinates.
+            </summary>
+            <remarks>The <see cref="T:LeadSoft.Common.GlobalDomain.Entities.LatLong"/> class provides properties to store and manipulate geographical
+            coordinates. Latitude values must be between -90 and 90 degrees, and longitude values must be between -180 and
+            180 degrees.</remarks>
+            <param name="lat"></param>
+            <param name="lng"></param>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.LatLong.Latidute">
+            <summary>
+            Gets or sets the latitude coordinate.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.Common.GlobalDomain.Entities.LatLong.Longidute">
+            <summary>
+            Gets or sets the longitude coordinate.
+            </summary>
         </member>
         <member name="T:LeadSoft.Common.GlobalDomain.Entities.Fiscal.CEST">
             <summary>
